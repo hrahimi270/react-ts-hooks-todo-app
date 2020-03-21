@@ -9,9 +9,7 @@ type props = {
 	done: boolean;
 	important?: boolean;
 	myDay?: boolean;
-	onDone: Function;
-	onImportantClick: Function;
-	onMyDayClick: Function;
+	onEdit: Function;
 	onDeleteClick: Function;
 };
 
@@ -36,14 +34,25 @@ export default (props: props) => {
 	});
 	const DeleteButtonClasses = classNames(buttonsBaseClasses, 'text-red-600', 'hover:text-red-400')
 
+	function onDoneChanges() {
+		const { id } = props;
+		props.onEdit(id, {
+			done: !props.done
+		});
+	}
+
 	function importantClicked() {
 		const { id } = props;
-		props.onImportantClick(id);
+		props.onEdit(id, {
+			important: !props.important
+		});
 	}
 
 	function myDayClicked() {
 		const { id } = props;
-		props.onMyDayClick(id);
+		props.onEdit(id, {
+			myday: !props.myDay
+		});
 	}
 
 	function deleteClicked() {
@@ -56,8 +65,8 @@ export default (props: props) => {
 			<RowCheckbox
 				label={props.task}
 				checked={props.done}
-				labelFor="test"
-				onChange={props.onDone}
+				labelFor={props.id}
+				onChange={onDoneChanges}
 			/>
 
 			<div className="ml-auto flex items-center">
