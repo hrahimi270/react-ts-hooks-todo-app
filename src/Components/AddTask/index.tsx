@@ -46,6 +46,7 @@ export default (props: props) => {
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 				onKeyDown={(e) => handleKeydown(e)}
+				autoFocus
 				className="bg-transparent flex-grow placeholder-gray-500 text-grsy-700 focus:outline-none px-3 py-2"
 			/>
 		</div>
