@@ -14,26 +14,26 @@ export default () => {
             {/* Links */}
             <div className="flex-grow">
                 <SidebarLink
-                    path="/"
+                    path="/tasks/important"
                     text="Important"
                     color="purple"
                     icon={<FiStar />}
                 />
                 <SidebarLink
-                    path="/"
+                    path="/tasks/myday"
                     text="My Day"
                     color="orange"
                     icon={<FiSun />}
                 />
                 <SidebarLink
-                    path="/"
+                    path="/tasks"
                     text="Tasks"
                     color="blue"
                     icon={<FiHome />}
                 />
                 <span className="block w-11/12 bg-gray-200 my-2 mx-auto" style={{ height: 2 }} />
                 <SidebarLink
-                    path="/"
+                    path="/tasks/list/285osg-2sjngs0"
                     text="WPJS Test project"
                     icon={<FiList />}
                 />
