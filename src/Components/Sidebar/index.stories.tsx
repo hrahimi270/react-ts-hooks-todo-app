@@ -1,7 +1,5 @@
-import React from 'react'
-import Sidebar from '../Sidebar'
+import React from "react";
+import Sidebar from "../Sidebar";
 
-export default { title: 'Sidebar' };
-export const MainSidebar = () => (
-    <Sidebar />
-)
+export default { title: "Sidebar" };
+export const MainSidebar = () => <Sidebar />;

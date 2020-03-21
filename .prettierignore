@@ -3,12 +3,14 @@ build
 static
 .gitignore
 .prettierignore
-yarn.lock
 
 .heroku/
 .npm/
 
 *.DS_Store
+*.log
+*.json
+*.lock
 *.ico
 *.txt
 *.png
