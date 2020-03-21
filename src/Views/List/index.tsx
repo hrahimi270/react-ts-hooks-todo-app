@@ -12,10 +12,8 @@ export default () => {
 					done={false}
 					important={true}
 					myDay={true}
-					onDone={() => {}}
-					onImportantClick={() => {}}
-					onMyDayClick={() => {}}
-					onDeleteClick={() => {}}
+					onEdit={() => { }}
+					onDeleteClick={() => { }}
 				/>
 			</TaskRowsContainer>
 		</>

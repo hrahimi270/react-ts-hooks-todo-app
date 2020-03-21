@@ -15,7 +15,7 @@ export default () => {
 			<ContentTitle title="Tasks" />
 			<TaskRowsContainer>
 				<TodoContext.Consumer>
-					{({ tasks, deleteTask }) => {
+					{({ tasks, editTask, deleteTask }) => {
 						const filteredTasks = tasks.filter(
 							(task) => task.inList === false,
 						);
@@ -29,19 +29,17 @@ export default () => {
 										done={task.done}
 										important={task.important}
 										myDay={task.myday}
-										onDone={() => {}}
-										onImportantClick={() => {}}
-										onMyDayClick={() => {}}
+										onEdit={editTask}
 										onDeleteClick={deleteTask}
 									/>
 								);
 							})
 						) : (
-							<EmptyState
-								image={tasksImage}
-								text="Your tasks are empty!"
-							/>
-						);
+								<EmptyState
+									image={tasksImage}
+									text="Your tasks are empty!"
+								/>
+							);
 					}}
 				</TodoContext.Consumer>
 			</TaskRowsContainer>
