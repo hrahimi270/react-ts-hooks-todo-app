@@ -6,7 +6,7 @@ type props = {
 
 export default (props: props) => {
     return (
-        <div className="flex-grow mb-10 overflow-y-auto">
+        <div className="flex-grow h-full mb-10 overflow-y-auto">
             {props.children}
         </div>
     )
