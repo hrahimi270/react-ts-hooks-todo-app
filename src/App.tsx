@@ -16,23 +16,28 @@ function App() {
 		localStorage.setItem("tasks", JSON.stringify(newTasks));
 	}
 
-	function editTask(taskID: string) {}
+	function editTask(taskID: string) { }
 
-	function deleteTask(taskID: string) {}
+	function deleteTask(taskID: string) {
+		const newTasks = tasks.filter((task) => task.id !== taskID);
+
+		setTasks(newTasks);
+		localStorage.setItem("tasks", JSON.stringify(newTasks));
+	}
 
 	// list functions
-	function addList(list: ListType) {}
+	function addList(list: ListType) { }
 
-	function editList(listID: string) {}
+	function editList(listID: string) { }
 
-	function deleteList(listID: string) {}
+	function deleteList(listID: string) { }
 
 	// group functions
-	function addGroup(group: GroupType) {}
+	function addGroup(group: GroupType) { }
 
-	function editGroup(groupID: string) {}
+	function editGroup(groupID: string) { }
 
-	function deleteGroup(groupID: string) {}
+	function deleteGroup(groupID: string) { }
 
 	useEffect(() => {
 		const localTasks = localStorage.getItem("tasks");

@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { FiStar, FiSun } from "react-icons/fi";
+import { FiStar, FiSun, FiTrash } from "react-icons/fi";
 import RowCheckbox from "../RowCheckbox";
 
 type props = {
@@ -12,6 +12,7 @@ type props = {
 	onDone: Function;
 	onImportantClick: Function;
 	onMyDayClick: Function;
+	onDeleteClick: Function;
 };
 
 export default (props: props) => {
@@ -33,6 +34,7 @@ export default (props: props) => {
 		"hover:text-orange-400": props.myDay,
 		"focus:text-orange-400": props.myDay,
 	});
+	const DeleteButtonClasses = classNames(buttonsBaseClasses, 'text-red-600', 'hover:text-red-400')
 
 	function importantClicked() {
 		const { id } = props;
@@ -42,6 +44,11 @@ export default (props: props) => {
 	function myDayClicked() {
 		const { id } = props;
 		props.onMyDayClick(id);
+	}
+
+	function deleteClicked() {
+		const { id } = props;
+		props.onDeleteClick(id);
 	}
 
 	return (
@@ -62,6 +69,9 @@ export default (props: props) => {
 				</button>
 				<button className={myDayButtonClasses} onClick={myDayClicked}>
 					<FiSun />
+				</button>
+				<button className={DeleteButtonClasses} onClick={deleteClicked}>
+					<FiTrash />
 				</button>
 			</div>
 		</div>

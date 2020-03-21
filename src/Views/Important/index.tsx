@@ -15,7 +15,7 @@ export default () => {
 			<ContentTitle title="Important" />
 			<TaskRowsContainer>
 				<TodoContext.Consumer>
-					{({ tasks }) => {
+					{({ tasks, deleteTask }) => {
 						const filteredTasks = tasks.filter(
 							(task) => task.important === true,
 						);
@@ -32,6 +32,7 @@ export default () => {
 										onDone={() => {}}
 										onImportantClick={() => {}}
 										onMyDayClick={() => {}}
+										onDeleteClick={deleteTask}
 									/>
 								);
 							})
