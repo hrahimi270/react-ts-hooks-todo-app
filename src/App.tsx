@@ -12,11 +12,24 @@ function App() {
 	// task functions
 	function addTask(task: TaskType) {
 		const newTasks = tasks.concat(task);
+
 		setTasks(newTasks);
 		localStorage.setItem("tasks", JSON.stringify(newTasks));
 	}
 
-	function editTask(taskID: string) { }
+	function editTask(taskID: string, edits: TaskType) {
+		const newTasks = tasks.map((task) => {
+			if (task.id === taskID) {
+				return {
+					...task,
+					...edits
+				}
+			} else return task;
+		})
+
+		setTasks(newTasks);
+		localStorage.setItem("tasks", JSON.stringify(newTasks));
+	}
 
 	function deleteTask(taskID: string) {
 		const newTasks = tasks.filter((task) => task.id !== taskID);
@@ -26,23 +39,77 @@ function App() {
 	}
 
 	// list functions
-	function addList(list: ListType) { }
+	function addList(list: ListType) {
+		const newLists = lists.concat(list);
 
-	function editList(listID: string) { }
+		setLists(newLists);
+		localStorage.setItem("lists", JSON.stringify(newLists));
+	}
 
-	function deleteList(listID: string) { }
+	function editList(listID: string, edits: ListType) {
+		const newLists = lists.map((list) => {
+			if (list.id === listID) {
+				return {
+					...list,
+					...edits
+				}
+			} else return list;
+		})
+
+		setLists(newLists);
+		localStorage.setItem("lists", JSON.stringify(newLists));
+	}
+
+	function deleteList(listID: string) {
+		const newLists = lists.filter((list) => list.id !== listID);
+
+		setLists(newLists);
+		localStorage.setItem("lists", JSON.stringify(newLists));
+	}
 
 	// group functions
-	function addGroup(group: GroupType) { }
+	function addGroup(group: GroupType) {
+		const newGroups = groups.concat(group);
 
-	function editGroup(groupID: string) { }
+		setGroups(newGroups);
+		localStorage.setItem("groups", JSON.stringify(newGroups));
+	}
 
-	function deleteGroup(groupID: string) { }
+	function editGroup(groupID: string, edits: GroupType) {
+		const newGroups = groups.map((group) => {
+			if (group.id === groupID) {
+				return {
+					...group,
+					...edits
+				}
+			} else return group;
+		})
+
+		setGroups(newGroups);
+		localStorage.setItem("groups", JSON.stringify(newGroups));
+	}
+
+	function deleteGroup(groupID: string) {
+		const newGroups = groups.filter((group) => group.id !== groupID);
+
+		setGroups(newGroups);
+		localStorage.setItem("groups", JSON.stringify(newGroups));
+	}
 
 	useEffect(() => {
 		const localTasks = localStorage.getItem("tasks");
 		if (localTasks) {
 			setTasks(JSON.parse(localTasks));
+		}
+
+		const localLists = localStorage.getItem("lists");
+		if (localLists) {
+			setLists(JSON.parse(localLists));
+		}
+
+		const localGroups = localStorage.getItem("groups");
+		if (localGroups) {
+			setGroups(JSON.parse(localGroups));
 		}
 	}, []);
 
