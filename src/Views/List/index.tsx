@@ -7,20 +7,26 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext } from "../../context";
+import { TodoContext, ListType } from "../../context";
 import tasksImage from "../../Statics/empty-tasks.svg";
 
 export default () => {
 	const { id } = useParams();
 
+	function getListName(lists: Array<ListType>): string {
+		const activeList: ListType = lists.filter((list) => list.id === id)[0];
+
+		const name =
+			activeList && activeList.name ? activeList.name : "undefined";
+
+		return name;
+	}
+
 	return (
 		<>
 			<TodoContext.Consumer>
 				{({ lists }) => {
-					const activeList = lists.filter(
-						(list) => list.id === id,
-					)[0];
-					const name = activeList.name ? activeList.name : "";
+					const name = getListName(lists);
 
 					return <ContentTitle title={name} />;
 				}}
