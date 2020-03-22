@@ -59,11 +59,23 @@ function App() {
 		localStorage.setItem("lists", JSON.stringify(newLists));
 	}
 
-	function deleteList(listID: string) {
+	function deleteList(listID: string, fallback: Function) {
+		// first, delete this list's tasks
+		const newTasks = tasks.filter((task) => task.listID !== listID);
+
+		// second, delete the list itself
 		const newLists = lists.filter((list) => list.id !== listID);
 
+		// aply new states
 		setLists(newLists);
+		setTasks(newTasks);
+
+		// update localstorage
 		localStorage.setItem("lists", JSON.stringify(newLists));
+		localStorage.setItem("tasks", JSON.stringify(newTasks));
+
+		// run the fallback
+		fallback && fallback();
 	}
 
 	useEffect(() => {
