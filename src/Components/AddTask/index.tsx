@@ -6,7 +6,7 @@ import { TaskType } from "../../context";
 type props = {
 	isImportant: boolean;
 	isMyday: boolean;
-	isInList: boolean;
+	listID?: string;
 	onAdd: Function;
 };
 
@@ -15,6 +15,7 @@ export default (props: props) => {
 
 	function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
 		const { key, keyCode } = event;
+		const { listID = '' } = props;
 
 		if (key === "Enter" && keyCode === 13) {
 			const id = uniqid();
@@ -26,7 +27,7 @@ export default (props: props) => {
 				done: false,
 				important: props.isImportant,
 				myday: props.isMyday,
-				inList: props.isInList,
+				listID
 			};
 			props.onAdd(taskData);
 
@@ -47,7 +48,7 @@ export default (props: props) => {
 				onChange={(e) => setValue(e.target.value)}
 				onKeyDown={(e) => handleKeydown(e)}
 				autoFocus
-				className="bg-transparent flex-grow placeholder-gray-500 text-grsy-700 focus:outline-none px-3 py-2"
+				className="bg-transparent flex-grow placeholder-gray-500 text-gray-700 focus:outline-none px-3 py-2"
 			/>
 		</div>
 	);
