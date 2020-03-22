@@ -8,7 +8,7 @@ import {
 	EmptyState,
 } from "../../Components";
 import { TodoContext, ListType } from "../../context";
-import tasksImage from "../../Statics/empty-tasks.svg";
+import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
 export default () => {
 	const { id } = useParams();
@@ -55,7 +55,7 @@ export default () => {
 							})
 						) : (
 							<EmptyState
-								image={tasksImage}
+								image={listTasksImage}
 								text="There is no task in this list!"
 							/>
 						);
