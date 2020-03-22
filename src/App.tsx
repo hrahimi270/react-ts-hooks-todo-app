@@ -21,10 +21,10 @@ function App() {
 			if (task.id === taskID) {
 				return {
 					...task,
-					...edits
-				}
+					...edits,
+				};
 			} else return task;
-		})
+		});
 
 		setTasks(newTasks);
 		localStorage.setItem("tasks", JSON.stringify(newTasks));
@@ -50,10 +50,10 @@ function App() {
 			if (list.id === listID) {
 				return {
 					...list,
-					...edits
-				}
+					...edits,
+				};
 			} else return list;
-		})
+		});
 
 		setLists(newLists);
 		localStorage.setItem("lists", JSON.stringify(newLists));
@@ -100,7 +100,7 @@ function App() {
 				deleteTask,
 				addList,
 				editList,
-				deleteList
+				deleteList,
 			}}
 		>
 			<BrowserRouter>

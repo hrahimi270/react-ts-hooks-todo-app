@@ -1,6 +1,12 @@
 import React from "react";
-import { useParams } from 'react-router-dom'
-import { ContentTitle, TaskRowsContainer, TaskRow, AddTask, EmptyState } from "../../Components";
+import { useParams } from "react-router-dom";
+import {
+	ContentTitle,
+	TaskRowsContainer,
+	TaskRow,
+	AddTask,
+	EmptyState,
+} from "../../Components";
 import { TodoContext } from "../../context";
 import tasksImage from "../../Statics/empty-tasks.svg";
 
@@ -10,12 +16,14 @@ export default () => {
 	return (
 		<>
 			<TodoContext.Consumer>
-				{(({ lists }) => {
-					const activeList = lists.filter((list) => list.id === id)[0];
-					const name = activeList.name ? activeList.name : '';
-					
+				{({ lists }) => {
+					const activeList = lists.filter(
+						(list) => list.id === id,
+					)[0];
+					const name = activeList.name ? activeList.name : "";
+
 					return <ContentTitle title={name} />;
-				})}
+				}}
 			</TodoContext.Consumer>
 			<TaskRowsContainer>
 				<TodoContext.Consumer>
@@ -40,11 +48,11 @@ export default () => {
 								);
 							})
 						) : (
-								<EmptyState
-									image={tasksImage}
-									text="There is no task in this list!"
-								/>
-							);
+							<EmptyState
+								image={tasksImage}
+								text="There is no task in this list!"
+							/>
+						);
 					}}
 				</TodoContext.Consumer>
 			</TaskRowsContainer>

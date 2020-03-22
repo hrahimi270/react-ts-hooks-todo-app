@@ -35,5 +35,5 @@ export const TodoContext = createContext({
 
 	addList,
 	editList,
-	deleteList
+	deleteList,
 });

@@ -32,26 +32,30 @@ export default (props: props) => {
 		"hover:text-orange-400": props.myDay,
 		"focus:text-orange-400": props.myDay,
 	});
-	const DeleteButtonClasses = classNames(buttonsBaseClasses, 'text-red-600', 'hover:text-red-400')
+	const DeleteButtonClasses = classNames(
+		buttonsBaseClasses,
+		"text-red-600",
+		"hover:text-red-400",
+	);
 
 	function onDoneChanges() {
 		const { id } = props;
 		props.onEdit(id, {
-			done: !props.done
+			done: !props.done,
 		});
 	}
 
 	function importantClicked() {
 		const { id } = props;
 		props.onEdit(id, {
-			important: !props.important
+			important: !props.important,
 		});
 	}
 
 	function myDayClicked() {
 		const { id } = props;
 		props.onEdit(id, {
-			myday: !props.myDay
+			myday: !props.myDay,
 		});
 	}
 

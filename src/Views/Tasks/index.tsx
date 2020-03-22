@@ -17,9 +17,9 @@ export default () => {
 				<TodoContext.Consumer>
 					{({ tasks, editTask, deleteTask }) => {
 						const filteredTasks = tasks.filter(
-							(task) => task.listID === '',
+							(task) => task.listID === "",
 						);
-						
+
 						return filteredTasks.length ? (
 							filteredTasks.map((task) => {
 								return (
@@ -36,11 +36,11 @@ export default () => {
 								);
 							})
 						) : (
-								<EmptyState
-									image={tasksImage}
-									text="Your tasks are empty!"
-								/>
-							);
+							<EmptyState
+								image={tasksImage}
+								text="Your tasks are empty!"
+							/>
+						);
 					}}
 				</TodoContext.Consumer>
 			</TaskRowsContainer>

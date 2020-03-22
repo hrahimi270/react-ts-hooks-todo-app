@@ -15,7 +15,7 @@ export default (props: props) => {
 
 	function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
 		const { key, keyCode } = event;
-		const { listID = '' } = props;
+		const { listID = "" } = props;
 
 		if (key === "Enter" && keyCode === 13) {
 			const id = uniqid();
@@ -27,7 +27,7 @@ export default (props: props) => {
 				done: false,
 				important: props.isImportant,
 				myday: props.isMyday,
-				listID
+				listID,
 			};
 			props.onAdd(taskData);
 

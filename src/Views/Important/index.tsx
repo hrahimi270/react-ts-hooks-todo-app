@@ -46,11 +46,7 @@ export default () => {
 
 			<TodoContext.Consumer>
 				{({ addTask }) => (
-					<AddTask
-						onAdd={addTask}
-						isMyday={false}
-						isImportant
-					/>
+					<AddTask onAdd={addTask} isMyday={false} isImportant />
 				)}
 			</TodoContext.Consumer>
 		</>
