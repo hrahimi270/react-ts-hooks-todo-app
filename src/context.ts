@@ -37,3 +37,5 @@ export const TodoContext = createContext({
 	editList,
 	deleteList,
 });
+
+TodoContext.displayName = "TodoContext";
