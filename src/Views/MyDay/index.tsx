@@ -49,7 +49,6 @@ export default () => {
 					<AddTask
 						onAdd={addTask}
 						isImportant={false}
-						isInList={false}
 						isMyday
 					/>
 				)}
