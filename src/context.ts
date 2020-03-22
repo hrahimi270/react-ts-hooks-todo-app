@@ -6,13 +6,12 @@ export type TaskType = {
 	done: boolean;
 	important: boolean;
 	myday: boolean;
-	inList: boolean;
+	listID: string;
 };
 
 export type ListType = {
 	id: string;
-	tasks: Array<TaskType>;
-	inGroup: boolean;
+	name: string;
 };
 
 const tasks: Array<TaskType> = [];
