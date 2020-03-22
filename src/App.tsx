@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { TodoContext, TaskType, ListType, GroupType } from "./context";
+import { TodoContext, TaskType, ListType } from "./context";
 import { DefaultLayout } from "./Layouts";
 import { ImportantView, MyDayView, TasksView, ListView } from "./Views";
 
 function App() {
 	const [tasks, setTasks] = useState<Array<TaskType>>([]);
 	const [lists, setLists] = useState<Array<ListType>>([]);
-	const [groups, setGroups] = useState<Array<GroupType>>([]);
 
 	// task functions
 	function addTask(task: TaskType) {
@@ -67,35 +66,6 @@ function App() {
 		localStorage.setItem("lists", JSON.stringify(newLists));
 	}
 
-	// group functions
-	function addGroup(group: GroupType) {
-		const newGroups = groups.concat(group);
-
-		setGroups(newGroups);
-		localStorage.setItem("groups", JSON.stringify(newGroups));
-	}
-
-	function editGroup(groupID: string, edits: GroupType) {
-		const newGroups = groups.map((group) => {
-			if (group.id === groupID) {
-				return {
-					...group,
-					...edits
-				}
-			} else return group;
-		})
-
-		setGroups(newGroups);
-		localStorage.setItem("groups", JSON.stringify(newGroups));
-	}
-
-	function deleteGroup(groupID: string) {
-		const newGroups = groups.filter((group) => group.id !== groupID);
-
-		setGroups(newGroups);
-		localStorage.setItem("groups", JSON.stringify(newGroups));
-	}
-
 	useEffect(() => {
 		const localTasks = localStorage.getItem("tasks");
 		if (localTasks) {
@@ -106,11 +76,6 @@ function App() {
 		if (localLists) {
 			setLists(JSON.parse(localLists));
 		}
-
-		const localGroups = localStorage.getItem("groups");
-		if (localGroups) {
-			setGroups(JSON.parse(localGroups));
-		}
 	}, []);
 
 	return (
@@ -118,16 +83,12 @@ function App() {
 			value={{
 				tasks,
 				lists,
-				groups,
 				addTask,
 				editTask,
 				deleteTask,
 				addList,
 				editList,
-				deleteList,
-				addGroup,
-				editGroup,
-				deleteGroup,
+				deleteList
 			}}
 		>
 			<BrowserRouter>

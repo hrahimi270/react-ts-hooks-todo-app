@@ -15,14 +15,8 @@ export type ListType = {
 	inGroup: boolean;
 };
 
-export type GroupType = {
-	id: string;
-	lists: Array<ListType>;
-};
-
 const tasks: Array<TaskType> = [];
 const lists: Array<ListType> = [];
-const groups: Array<GroupType> = [];
 
 const addTask: Function = () => {};
 const editTask: Function = () => {};
@@ -32,14 +26,9 @@ const addList: Function = () => {};
 const editList: Function = () => {};
 const deleteList: Function = () => {};
 
-const addGroup: Function = () => {};
-const editGroup: Function = () => {};
-const deleteGroup: Function = () => {};
-
 export const TodoContext = createContext({
 	tasks,
 	lists,
-	groups,
 
 	addTask,
 	editTask,
@@ -47,9 +36,5 @@ export const TodoContext = createContext({
 
 	addList,
 	editList,
-	deleteList,
-
-	addGroup,
-	editGroup,
-	deleteGroup,
+	deleteList
 });
