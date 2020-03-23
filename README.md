@@ -1,4 +1,5 @@
 # Todo app
+
 This app created with React (cra), TypeScript, TailwindCSS, Styled-components.
 
 ## Available Scripts
