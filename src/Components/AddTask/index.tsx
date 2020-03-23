@@ -15,12 +15,18 @@ export default (props: props) => {
 
 	function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
 		const { key, keyCode } = event;
-		const { listID = "" } = props;
 
 		if (key === "Enter" && keyCode === 13) {
-			const id = uniqid();
-			const task = value;
+			handleAddingTask();
+		}
+	}
 
+	function handleAddingTask() {
+		const id = uniqid();
+		const task = value;
+		const { listID = "" } = props;
+
+		if (task !== '') {
 			const taskData: TaskType = {
 				id,
 				task,
@@ -34,13 +40,14 @@ export default (props: props) => {
 			// clear input
 			setValue("");
 		}
+
 	}
 
 	return (
 		<div className="flex items-center w-full rounded-md bg-gray-200 mb-3 py-1 px-3">
-			<span className="text-gray-600">
+			<button type="button" className="text-gray-600 focus:outline-none" onClick={handleAddingTask}>
 				<FiPlus />
-			</span>
+			</button>
 			<input
 				type="text"
 				placeholder="Write new task and press Enter"
