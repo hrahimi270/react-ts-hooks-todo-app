@@ -14,8 +14,8 @@ export type ListType = {
 	name: string;
 };
 
-const tasks: Array<TaskType> = [];
-const lists: Array<ListType> = [];
+export const tasks: Array<TaskType> = [];
+export const lists: Array<ListType> = [];
 
 const addTask: Function = () => {};
 const editTask: Function = () => {};
