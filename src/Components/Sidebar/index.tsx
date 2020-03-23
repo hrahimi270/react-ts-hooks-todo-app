@@ -1,8 +1,8 @@
 import React from "react";
 import { TodoContext } from "../../context";
-import SidebarLogo from "./SidebarLogo";
-import SidebarLinks from "./SidebarLinks";
-import SidebarActions from "./SidebarActions";
+import SidebarLogo from "../SidebarLogo";
+import SidebarLinksWrapper from "../SidebarLinksWrapper";
+import SidebarActions from "../SidebarActions";
 
 export default () => {
 	return (
@@ -11,7 +11,7 @@ export default () => {
 			<SidebarLogo />
 
 			{/* Links */}
-			<SidebarLinks />
+			<SidebarLinksWrapper />
 
 			{/* Actions */}
 			<TodoContext.Consumer>
