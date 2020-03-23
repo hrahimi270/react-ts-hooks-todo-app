@@ -6,12 +6,11 @@ import { TaskType } from "../../context";
 
 test("AddTask component", async () => {
 	const onAddMock = jest.fn((data) => data);
-	const { container, rerender } = render(
+	const { container } = render(
 		<AddTask isImportant isMyday onAdd={onAddMock} />,
 	);
 	const placeholder = "Write new task and press Enter";
 	const text = "Test task";
-	const listID = "test-list-id";
 	const input = container.getElementsByTagName("input")[0];
 	const button = container.getElementsByTagName("button")[0];
 
