@@ -118,6 +118,7 @@ function App() {
 							component={ImportantView}
 						/>
 						<Route path="/tasks/myday" component={MyDayView} />
+						<Route render={() => <Redirect to="/tasks" />} />
 					</Switch>
 				</DefaultLayout>
 			</BrowserRouter>
