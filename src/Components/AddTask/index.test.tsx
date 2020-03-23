@@ -25,7 +25,7 @@ test("AddTask component", async () => {
 	// input shouldn't be empty after type
 	expect(input).toHaveAttribute("value", text);
 
-	// triger click event on button
+	// trigger click event on button
 	userEvent.click(button);
 
 	// input should be empty after button clicks

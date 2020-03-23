@@ -14,14 +14,21 @@ export default (props: props) => {
 		const { key, keyCode } = event;
 
 		if (key === "Enter" && keyCode === 13) {
-			const id = uniqid();
-			const name = inputValue;
+			handleAdd();
+		}
+	}
 
+	function handleAdd() {
+		const id = uniqid();
+		const name = inputValue;
+
+		if (name !== "") {
 			const listData: ListType = {
 				id,
 				name,
 			};
 			props.onAdd(listData);
+
 			// clear input
 			setInputValue("");
 		}
@@ -30,9 +37,9 @@ export default (props: props) => {
 	return (
 		<div className="w-11/12 flex items-center justify-between px-6 mx-auto">
 			<div className="flex items-center text-gray-500 hover:text-gray-600 focus:outline-none">
-				<span className="mr-2">
+				<button className="mr-2 focus:outline-none" onClick={handleAdd}>
 					<FiPlus />
-				</span>
+				</button>
 				<input
 					type="text"
 					placeholder="Add new list"
