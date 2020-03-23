@@ -5,11 +5,13 @@ import { TodoContext } from "../../context";
 
 type props = {
 	title: string;
+	inCustomList?: boolean;
 };
 
 export default (props: props) => {
 	const { push } = useHistory();
 	const { id } = useParams();
+	const { inCustomList = false } = props;
 
 	return (
 		<div className="flex items-center justify-between">
@@ -17,7 +19,7 @@ export default (props: props) => {
 				{props.title}
 			</h1>
 
-			{id && id !== "" ? (
+			{inCustomList && (
 				<TodoContext.Consumer>
 					{({ deleteList }) => (
 						<button
@@ -28,7 +30,7 @@ export default (props: props) => {
 						</button>
 					)}
 				</TodoContext.Consumer>
-			) : null}
+			)}
 		</div>
 	);
 };

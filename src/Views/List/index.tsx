@@ -28,7 +28,7 @@ export default () => {
 				{({ lists }) => {
 					const name = getListName(lists);
 
-					return <ContentTitle title={name} />;
+					return <ContentTitle inCustomList title={name} />;
 				}}
 			</TodoContext.Consumer>
 			<TaskRowsContainer>
