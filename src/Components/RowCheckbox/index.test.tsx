@@ -7,7 +7,7 @@ test("render Checkbox component", () => {
 	const labelFor = "test-label-id";
 	const checked = false;
 	const onChange = jest.fn();
-	const { container, debug } = render(
+	const { container } = render(
 		<RowCheckbox
 			label={labelText}
 			labelFor={labelFor}
