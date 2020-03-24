@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": false,
 	"dependencies": {
+		"@storybook/addon-knobs": "^5.3.17",
 		"@storybook/preset-create-react-app": "^2.0.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
