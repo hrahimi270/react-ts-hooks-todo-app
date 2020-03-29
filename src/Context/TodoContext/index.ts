@@ -1,4 +1,4 @@
 export { default as TodoContext } from "./context";
-export { default as TaskState } from "./TaskState";
+export { default as TodoState } from "./TodoState";
 export { INITIAL_STATE } from "./constants";
 export * from "./types";

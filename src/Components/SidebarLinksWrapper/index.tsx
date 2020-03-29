@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
-import { TodoContext, IList } from "../../Context/TasksContext";
+import { TodoContext, IList } from "../../Context/TodoContext";
 import SidebarLink from "../SidebarLink";
 
 export default () => {

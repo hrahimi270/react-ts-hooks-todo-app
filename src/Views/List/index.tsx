@@ -7,7 +7,7 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext, IList, ITask } from "../../Context/TasksContext";
+import { TodoContext, IList, ITask } from "../../Context/TodoContext";
 import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
 export default () => {

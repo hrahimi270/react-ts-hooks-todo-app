@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import classnames from "classnames";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
-import { ITask } from "../../Context/TasksContext";
+import { ITask } from "../../Context/TodoContext";
+import { ThemeContext } from '../../Context/ThemeContext'
 
 type props = {
 	isImportant: boolean;
@@ -11,7 +13,21 @@ type props = {
 };
 
 export default (props: props) => {
+	const { theme } = useContext(ThemeContext)
 	const [value, setValue] = useState("");
+
+	const addTaskWrapperClassnames = classnames('flex items-center w-full rounded-md mb-3 py-1 px-3', {
+		'bg-gray-200': theme === 'light',
+		'bg-gray-900': theme === 'dark'
+	});
+	const addTaskButtonClassnames = classnames('focus:outline-none', {
+		'text-gray-600': theme === 'light',
+		'text-white': theme === 'dark'
+	});
+	const addTaskInputClassnames = classnames('bg-transparent flex-grow focus:outline-none px-3 py-2', {
+		'placeholder-gray-500 text-gray-700': theme === 'light',
+		'placeholder-gray-300 text-white': theme === 'dark'
+	});
 
 	function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
 		const { key, keyCode } = event;
@@ -43,10 +59,10 @@ export default (props: props) => {
 	}
 
 	return (
-		<div className="flex items-center w-full rounded-md bg-gray-200 mb-3 py-1 px-3">
+		<div className={addTaskWrapperClassnames}>
 			<button
 				type="button"
-				className="text-gray-600 focus:outline-none"
+				className={addTaskButtonClassnames}
 				onClick={handleAddingTask}
 			>
 				<FiPlus />
@@ -58,7 +74,7 @@ export default (props: props) => {
 				onChange={(e) => setValue(e.target.value)}
 				onKeyDown={(e) => handleKeydown(e)}
 				autoFocus
-				className="bg-transparent flex-grow placeholder-gray-500 text-gray-700 focus:outline-none px-3 py-2"
+				className={addTaskInputClassnames}
 			/>
 		</div>
 	);

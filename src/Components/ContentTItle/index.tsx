@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { FiTrash } from "react-icons/fi";
-import { TodoContext } from "../../Context/TasksContext";
+import { TodoContext } from "../../Context/TodoContext";
 
 type props = {
 	title: string;

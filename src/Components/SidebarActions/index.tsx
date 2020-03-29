@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
-import { IList } from "../../Context/TasksContext";
+import { IList } from "../../Context/TodoContext";
 
 type props = {
 	onAdd: Function;

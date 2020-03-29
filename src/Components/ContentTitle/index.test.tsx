@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ContentTItle from "../ContentTitle";
-import { TodoContext, INITIAL_STATE } from "../../Context/TasksContext";
+import { TodoContext, INITIAL_STATE } from "../../Context/TodoContext";
 
 jest.mock("react-router-dom", () => ({
 	useHistory: () => ({
