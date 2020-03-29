@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { FiTrash } from "react-icons/fi";
-import { TodoContext } from "../../context";
+import { TodoContext } from "../../Context/TasksContext";
 
 type props = {
 	title: string;
@@ -9,6 +9,7 @@ type props = {
 };
 
 export default (props: props) => {
+	const todoContext = useContext(TodoContext);
 	const { push } = useHistory();
 	const { id } = useParams();
 	const { inCustomList = false } = props;
@@ -20,16 +21,12 @@ export default (props: props) => {
 			</h1>
 
 			{inCustomList && (
-				<TodoContext.Consumer>
-					{({ deleteList }) => (
-						<button
-							className="flex p-3 text-2xl hover:text-red-600 focus:outline-none"
-							onClick={() => deleteList(id, push("/tasks"))}
-						>
-							<FiTrash />
-						</button>
-					)}
-				</TodoContext.Consumer>
+				<button
+					className="flex p-3 text-2xl hover:text-red-600 focus:outline-none"
+					onClick={() => todoContext.deleteList(id, push("/tasks"))}
+				>
+					<FiTrash />
+				</button>
 			)}
 		</div>
 	);

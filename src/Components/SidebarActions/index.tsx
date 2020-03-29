@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
-import { ListType } from "../../context";
+import { IList } from "../../Context/TasksContext";
 
 type props = {
 	onAdd: Function;
@@ -23,7 +23,7 @@ export default (props: props) => {
 		const name = inputValue;
 
 		if (name !== "") {
-			const listData: ListType = {
+			const listData: IList = {
 				id,
 				name,
 			};

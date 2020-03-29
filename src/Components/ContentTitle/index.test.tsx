@@ -2,7 +2,7 @@ import React from "react";
 import { render } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import ContentTItle from "../ContentTitle";
-import { TodoContext, tasks, lists } from "../../context";
+import { TodoContext, INITIAL_STATE } from "../../Context/TasksContext";
 
 jest.mock("react-router-dom", () => ({
 	useHistory: () => ({
@@ -27,8 +27,7 @@ function renderContentTItle(
 	return render(
 		<TodoContext.Provider
 			value={{
-				tasks,
-				lists,
+				...INITIAL_STATE,
 				addTask,
 				editTask,
 				deleteTask,

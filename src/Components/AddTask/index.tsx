@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
-import { TaskType } from "../../context";
+import { ITask } from "../../Context/TasksContext";
 
 type props = {
 	isImportant: boolean;
@@ -27,7 +27,7 @@ export default (props: props) => {
 		const { listID = "" } = props;
 
 		if (task !== "") {
-			const taskData: TaskType = {
+			const taskData: ITask = {
 				id,
 				task,
 				done: false,

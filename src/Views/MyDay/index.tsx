@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -6,49 +6,42 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext } from "../../context";
+import { TodoContext, ITask } from "../../Context/TasksContext";
 import mydayImage from "../../Statics/empty-myday.svg";
 
 export default () => {
+	const todoContext = useContext(TodoContext);
+	const filteredTasks: ITask[] = todoContext.tasks.filter(
+		(task: ITask) => task.myday === true,
+	);
+
 	return (
 		<>
 			<ContentTitle title="My Day" />
 			<TaskRowsContainer>
-				<TodoContext.Consumer>
-					{({ tasks, editTask, deleteTask }) => {
-						const filteredTasks = tasks.filter(
-							(task) => task.myday === true,
-						);
-						return filteredTasks.length ? (
-							filteredTasks.map((task) => {
-								return (
-									<TaskRow
-										key={task.id}
-										task={task.task}
-										id={task.id}
-										done={task.done}
-										important={task.important}
-										myDay={task.myday}
-										onEdit={editTask}
-										onDeleteClick={deleteTask}
-									/>
-								);
-							})
-						) : (
-							<EmptyState
-								image={mydayImage}
-								text="Your daily tasks are empty!"
+				{filteredTasks.length ? (
+					filteredTasks.map((task: ITask) => {
+						return (
+							<TaskRow
+								key={task.id}
+								task={task.task}
+								id={task.id}
+								done={task.done}
+								important={task.important}
+								myDay={task.myday}
+								onEdit={todoContext.editTask}
+								onDeleteClick={todoContext.deleteTask}
 							/>
 						);
-					}}
-				</TodoContext.Consumer>
-			</TaskRowsContainer>
-
-			<TodoContext.Consumer>
-				{({ addTask }) => (
-					<AddTask onAdd={addTask} isImportant={false} isMyday />
+					})
+				) : (
+					<EmptyState
+						image={mydayImage}
+						text="Your daily tasks are empty!"
+					/>
 				)}
-			</TodoContext.Consumer>
+			</TaskRowsContainer>
+			<AddTask onAdd={todoContext.addTask} isImportant={false} isMyday />
 		</>
 	);
 };

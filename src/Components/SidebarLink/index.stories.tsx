@@ -1,12 +1,17 @@
 import React from "react";
+import { storiesOf } from "@storybook/react";
+import { MemoryRouter } from "react-router-dom";
 import { FiHome } from "react-icons/fi";
 import SidebarLink from "../SidebarLink";
 
-export default { title: "SidebarLink" };
-export const withIcon = () => (
-	<SidebarLink text="Home" path="/" icon={<FiHome />} />
-);
-export const withoutIcon = () => <SidebarLink text="Home" path="/" />;
-export const withColor = () => (
-	<SidebarLink text="Home" color="orange" path="/" icon={<FiHome />} />
-);
+storiesOf("Sidebar Link", module)
+	.addDecorator((story) => (
+		<MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+	))
+	.add("With Icon", () => (
+		<SidebarLink text="Home" path="/" icon={<FiHome />} />
+	))
+	.add("without Icon", () => <SidebarLink text="Home" path="/" />)
+	.add("with Color", () => (
+		<SidebarLink text="Home" color="orange" path="/" icon={<FiHome />} />
+	));

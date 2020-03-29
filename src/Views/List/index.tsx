@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import {
 	ContentTitle,
@@ -7,14 +7,20 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext, ListType } from "../../context";
+import { TodoContext, IList, ITask } from "../../Context/TasksContext";
 import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
 export default () => {
 	const { id } = useParams();
+	const todoContext = useContext(TodoContext);
+	const filteredTasks: ITask[] = todoContext.tasks.filter(
+		(task: ITask) => task.listID === id,
+	);
 
-	function getListName(lists: Array<ListType>): string {
-		const activeList: ListType = lists.filter((list) => list.id === id)[0];
+	function getListName(): string {
+		const activeList: IList = todoContext.lists.filter(
+			(list: IList) => list.id === id,
+		)[0];
 
 		const name =
 			activeList && activeList.name ? activeList.name : "undefined";
@@ -24,55 +30,37 @@ export default () => {
 
 	return (
 		<>
-			<TodoContext.Consumer>
-				{({ lists }) => {
-					const name = getListName(lists);
-
-					return <ContentTitle inCustomList title={name} />;
-				}}
-			</TodoContext.Consumer>
+			<ContentTitle inCustomList title={getListName()} />
 			<TaskRowsContainer>
-				<TodoContext.Consumer>
-					{({ tasks, editTask, deleteTask }) => {
-						const filteredTasks = tasks.filter(
-							(task) => task.listID === id,
-						);
-
-						return filteredTasks.length ? (
-							filteredTasks.map((task) => {
-								return (
-									<TaskRow
-										key={task.id}
-										task={task.task}
-										id={task.id}
-										done={task.done}
-										important={task.important}
-										myDay={task.myday}
-										onEdit={editTask}
-										onDeleteClick={deleteTask}
-									/>
-								);
-							})
-						) : (
-							<EmptyState
-								image={listTasksImage}
-								text="There is no task in this list!"
+				{filteredTasks.length ? (
+					filteredTasks.map((task: ITask) => {
+						return (
+							<TaskRow
+								key={task.id}
+								task={task.task}
+								id={task.id}
+								done={task.done}
+								important={task.important}
+								myDay={task.myday}
+								onEdit={todoContext.editTask}
+								onDeleteClick={todoContext.deleteTask}
 							/>
 						);
-					}}
-				</TodoContext.Consumer>
-			</TaskRowsContainer>
-
-			<TodoContext.Consumer>
-				{({ addTask }) => (
-					<AddTask
-						onAdd={addTask}
-						listID={id}
-						isImportant={false}
-						isMyday={false}
+					})
+				) : (
+					<EmptyState
+						image={listTasksImage}
+						text="There is no task in this list!"
 					/>
 				)}
-			</TodoContext.Consumer>
+			</TaskRowsContainer>
+
+			<AddTask
+				onAdd={todoContext.addTask}
+				listID={id}
+				isImportant={false}
+				isMyday={false}
+			/>
 		</>
 	);
 };

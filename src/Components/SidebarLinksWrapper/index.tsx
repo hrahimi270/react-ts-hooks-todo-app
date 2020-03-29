@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
-import { TodoContext } from "../../context";
+import { TodoContext, IList } from "../../Context/TasksContext";
 import SidebarLink from "../SidebarLink";
 
 export default () => {
+	const todoContext = useContext(TodoContext);
+
 	return (
 		<div className="flex-grow mb-4">
 			<SidebarLink
@@ -28,9 +30,9 @@ export default () => {
 				className="block w-11/12 bg-gray-200 my-2 mx-auto"
 				style={{ height: 2 }}
 			/>
-			<TodoContext.Consumer>
-				{({ lists }) => {
-					return lists.map((list) => {
+
+			{todoContext.lists.length
+				? todoContext.lists.map((list: IList) => {
 						return (
 							<SidebarLink
 								key={list.id}
@@ -39,9 +41,8 @@ export default () => {
 								icon={<FiList />}
 							/>
 						);
-					});
-				}}
-			</TodoContext.Consumer>
+				  })
+				: ""}
 		</div>
 	);
 };
