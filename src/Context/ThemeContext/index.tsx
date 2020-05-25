@@ -1,17 +1,16 @@
-import React, { createContext, useState, useEffect } from 'react'
+import React, { createContext, useState, useEffect, FC } from 'react'
 
-export const ThemeContext = createContext({ theme: 'light', toggleTheme: () => { } });
+export const ThemeContext = createContext({ theme: 'light' });
+export const ThemeDispatcherContext = createContext({ toggleTheme: () => { } });
 
-type props = {
-    children: React.ReactNode
-}
-
-export function ThemeState({ children }: props) {
+export const ThemeState: FC<{}> = ({ children }) => {
     const [theme, setTheme] = useState('light');
 
     function toggleTheme() {
         const nextTheme = theme === 'dark' ? 'light' : 'dark';
         setTheme(nextTheme)
+
+        localStorage.setItem('theme', nextTheme);
     }
 
     useEffect(() => {
@@ -22,8 +21,10 @@ export function ThemeState({ children }: props) {
     }, [])
 
     return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            {children}
+        <ThemeContext.Provider value={{ theme }}>
+            <ThemeDispatcherContext.Provider value={{ toggleTheme }}>
+                {children}
+            </ThemeDispatcherContext.Provider>
         </ThemeContext.Provider>
     )
 }

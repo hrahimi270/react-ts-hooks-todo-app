@@ -3,6 +3,7 @@ import classnames from "classnames";
 import { TodoDispatcherContext, IDispatchers } from "../../Context/TodoContext";
 import { ThemeContext } from '../../Context/ThemeContext'
 import SidebarLogo from "../SidebarLogo";
+import SidebarDarkmodeSwitcher from "../SidebarDarkmodeSwitcher"
 import SidebarLinksWrapper from "../SidebarLinksWrapper";
 import SidebarActions from "../SidebarActions";
 
@@ -18,6 +19,8 @@ export default () => {
 		<aside className={sidebarClassNames}>
 			{/* Logo */}
 			<SidebarLogo />
+
+			<SidebarDarkmodeSwitcher />
 
 			{/* Links */}
 			<SidebarLinksWrapper />

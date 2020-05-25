@@ -1,14 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
+import classnames from 'classnames';
 import { IList } from "../../Context/TodoContext";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 type props = {
 	onAdd: Function;
 };
 
 export default (props: props) => {
+	const { theme } = useContext(ThemeContext);
 	const [inputValue, setInputValue] = useState<string>("");
+	const isDark = theme === 'dark';
+
+	const inputClassnames = classnames('bg-transparent focus:outline-none px-2 py-1', {
+		'placeholder-gray-600': !isDark,
+		'placeholder-gray-400': isDark,
+		'text-gray-800': !isDark,
+		'text-gray-200': isDark,
+	});
+
+	const buttonClassnames = classnames('mr-2 focus:outline-none', {
+		'text-gray-500': !isDark,
+		'text-gray-400': isDark,
+		'hover:text-gray-700': !isDark,
+		'hover:text-gray-300': isDark,
+	});
 
 	function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {
 		const { key, keyCode } = event;
@@ -36,8 +54,8 @@ export default (props: props) => {
 
 	return (
 		<div className="w-11/12 flex items-center justify-between px-6 mx-auto">
-			<div className="flex items-center text-gray-500 hover:text-gray-600 focus:outline-none">
-				<button className="mr-2 focus:outline-none" onClick={handleAdd}>
+			<div className="flex items-center">
+				<button className={buttonClassnames} onClick={handleAdd}>
 					<FiPlus />
 				</button>
 				<input
@@ -46,7 +64,7 @@ export default (props: props) => {
 					value={inputValue}
 					onChange={(e) => setInputValue(e.target.value)}
 					onKeyDown={(e) => handleKeydown(e)}
-					className="placeholder-gray-500 text-gray-700 focus:outline-none px-2 py-1"
+					className={inputClassnames}
 				/>
 			</div>
 		</div>
