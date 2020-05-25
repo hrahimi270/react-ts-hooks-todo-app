@@ -1,7 +1,7 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { storiesOf } from "@storybook/react";
-import ContentTitle from "../ContentTitle";
+import ContentTitle from ".";
 
 storiesOf("Content Title", module)
 	.addDecorator((story) => (
