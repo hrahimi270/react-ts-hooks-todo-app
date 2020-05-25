@@ -19,9 +19,13 @@ export default (state: IState, action: IAction): IState => {
 			};
 
 		case ADD_TASK:
+			const newTasks = state.tasks.concat(action.payload);
+
+			localStorage.setItem("tasks", JSON.stringify(newTasks));
+			
 			return {
 				...state,
-				tasks: state.tasks.concat(action.payload),
+				tasks: newTasks,
 			};
 
 		case EDIT_TASK: {
@@ -62,9 +66,13 @@ export default (state: IState, action: IAction): IState => {
 			};
 
 		case ADD_LIST:
+			const newLists = state.lists.concat(action.payload);
+
+			localStorage.setItem("lists", JSON.stringify(newLists));
+
 			return {
 				...state,
-				lists: state.lists.concat(action.payload),
+				lists: newLists,
 			};
 
 		case EDIT_LIST: {
