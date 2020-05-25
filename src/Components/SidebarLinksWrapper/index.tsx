@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
-import { TodoContext, IList } from "../../Context/TodoContext";
+import { TodoContext, IList, IState } from "../../Context/TodoContext";
 import SidebarLink from "../SidebarLink";
 
 export default () => {
-	const todoContext = useContext(TodoContext);
+	const { lists } = useContext<IState>(TodoContext);
 
 	return (
 		<div className="flex-grow mb-4">
@@ -31,8 +31,8 @@ export default () => {
 				style={{ height: 2 }}
 			/>
 
-			{todoContext.lists.length
-				? todoContext.lists.map((list: IList) => {
+			{lists.length
+				? lists.map((list: IList) => {
 						return (
 							<SidebarLink
 								key={list.id}

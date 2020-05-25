@@ -21,3 +21,12 @@ export interface IAction {
 	type: string;
 	payload: any;
 }
+
+export interface IDispatchers {
+	addTask: () => void,
+	editTask: () => void,
+	deleteTask: () => void,
+	addList: () => void,
+	editList: () => void,
+	deleteList: (listID: string, fallback: void) => void,
+}

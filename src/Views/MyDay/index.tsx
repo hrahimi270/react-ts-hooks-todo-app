@@ -6,12 +6,13 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext, ITask } from "../../Context/TodoContext";
+import { TodoContext, TodoDispatcherContext, ITask, IState, IDispatchers } from "../../Context/TodoContext";
 import mydayImage from "../../Statics/empty-myday.svg";
 
 export default () => {
-	const todoContext = useContext(TodoContext);
-	const filteredTasks: ITask[] = todoContext.tasks.filter(
+	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(TodoDispatcherContext)
+	const { tasks } = useContext<IState>(TodoContext);
+	const filteredTasks: ITask[] = tasks.filter(
 		(task: ITask) => task.myday === true,
 	);
 
@@ -29,8 +30,8 @@ export default () => {
 								done={task.done}
 								important={task.important}
 								myDay={task.myday}
-								onEdit={todoContext.editTask}
-								onDeleteClick={todoContext.deleteTask}
+								onEdit={editTask}
+								onDeleteClick={deleteTask}
 							/>
 						);
 					})
@@ -41,7 +42,7 @@ export default () => {
 					/>
 				)}
 			</TaskRowsContainer>
-			<AddTask onAdd={todoContext.addTask} isImportant={false} isMyday />
+			<AddTask onAdd={addTask} isImportant={false} isMyday />
 		</>
 	);
 };

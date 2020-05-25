@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { FiTrash } from "react-icons/fi";
-import { TodoContext } from "../../Context/TodoContext";
+import { TodoDispatcherContext, IDispatchers } from "../../Context/TodoContext";
 
 type props = {
 	title: string;
@@ -9,9 +9,9 @@ type props = {
 };
 
 export default (props: props) => {
-	const todoContext = useContext(TodoContext);
+	const { deleteList } = useContext<IDispatchers>(TodoDispatcherContext);
 	const { push } = useHistory();
-	const { id } = useParams();
+	const { id = "" } = useParams();
 	const { inCustomList = false } = props;
 
 	return (
@@ -23,7 +23,7 @@ export default (props: props) => {
 			{inCustomList && (
 				<button
 					className="flex p-3 text-2xl hover:text-red-600 focus:outline-none"
-					onClick={() => todoContext.deleteList(id, push("/tasks"))}
+					onClick={() => deleteList(id, push("/tasks"))}
 				>
 					<FiTrash />
 				</button>

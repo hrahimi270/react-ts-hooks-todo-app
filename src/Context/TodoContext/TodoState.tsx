@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import TodoContext from "./context";
+import { TodoContext, TodoDispatcherContext } from "./context";
 import reducer from "./reducer";
 import {
 	INIT_TASKS,
@@ -92,16 +92,19 @@ function TaskState({ children }: props) {
 	return (
 		<TodoContext.Provider
 			value={{
-				...state,
+				...state
+			}}
+		>
+			<TodoDispatcherContext.Provider value={{
 				addTask,
 				editTask,
 				deleteTask,
 				addList,
 				editList,
 				deleteList,
-			}}
-		>
-			{children}
+			}}>
+				{children}
+			</TodoDispatcherContext.Provider>
 		</TodoContext.Provider>
 	);
 }

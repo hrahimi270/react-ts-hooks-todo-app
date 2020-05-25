@@ -14,3 +14,13 @@ export const INITIAL_STATE: IState = {
 	tasks: [],
 	lists: [],
 };
+
+export const INITIAL_DISPATCHERS = {
+	addTask: () => {},
+	editTask: () => {},
+	deleteTask: () => {},
+	addList: () => {},
+	editList: () => {},
+	deleteList: () => {},
+	
+}
