@@ -27,10 +27,13 @@ export default (props: props) => {
 		},
 	);
 
-	const taskSourceListClassnames = classNames('ml-3 flex items-center text-sm', {
-		'text-gray-500': isDark,
-		'text-gray-600': !isDark
-	})
+	const taskSourceListClassnames = classNames(
+		"ml-3 flex items-center text-sm",
+		{
+			"text-gray-500": isDark,
+			"text-gray-600": !isDark,
+		},
+	);
 
 	const buttonsBaseClasses = classNames(
 		"text-xl rounded-full p-3 focus:outline-none",

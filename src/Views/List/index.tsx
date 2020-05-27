@@ -15,7 +15,7 @@ import {
 	IState,
 	IDispatchers,
 } from "../../Context/TodoContext";
-import { filterCustomListTasks } from '../../Utils';
+import { filterCustomListTasks } from "../../Utils";
 import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
 export default () => {
@@ -59,11 +59,11 @@ export default () => {
 						);
 					})
 				) : (
-						<EmptyState
-							image={listTasksImage}
-							text="There is no task in this list!"
-						/>
-					)}
+					<EmptyState
+						image={listTasksImage}
+						text="There is no task in this list!"
+					/>
+				)}
 			</TaskRowsContainer>
 
 			<AddTask

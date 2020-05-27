@@ -13,7 +13,7 @@ import {
 	IState,
 	IDispatchers,
 } from "../../Context/TodoContext";
-import { isMydayTask, getListNameOfOneTask } from '../../Utils'
+import { isMydayTask, getListNameOfOneTask } from "../../Utils";
 import mydayImage from "../../Statics/empty-myday.svg";
 
 export default () => {
@@ -38,18 +38,21 @@ export default () => {
 								done={task.done}
 								important={task.important}
 								myDay={task.myday}
-								sourceList={getListNameOfOneTask(task.listID, lists)}
+								sourceList={getListNameOfOneTask(
+									task.listID,
+									lists,
+								)}
 								onEdit={editTask}
 								onDeleteClick={deleteTask}
 							/>
 						);
 					})
 				) : (
-						<EmptyState
-							image={mydayImage}
-							text="Your daily tasks are empty!"
-						/>
-					)}
+					<EmptyState
+						image={mydayImage}
+						text="Your daily tasks are empty!"
+					/>
+				)}
 			</TaskRowsContainer>
 			<AddTask onAdd={addTask} isImportant={false} isMyday />
 		</>

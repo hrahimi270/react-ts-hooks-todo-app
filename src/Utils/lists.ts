@@ -1,16 +1,16 @@
-import { IList } from '../Context/TodoContext'
+import { IList } from "../Context/TodoContext";
 
 export function getListOfTask(listID: string) {
-    return function isListOfTask(list: IList) {
-        return list.id === listID;
-    }
+	return function isListOfTask(list: IList) {
+		return list.id === listID;
+	};
 }
 
 export function getListNameOfOneTask(taskID: string, lists: IList[]): string {
-    if (!taskID) return '';
+	if (!taskID) return "";
 
-    const isListOfTask = getListOfTask(taskID);
-    const list = lists.filter(isListOfTask)[0];
+	const isListOfTask = getListOfTask(taskID);
+	const list = lists.filter(isListOfTask)[0];
 
-    return list.name;
+	return list.name;
 }

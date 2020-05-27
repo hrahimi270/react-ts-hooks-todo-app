@@ -13,7 +13,7 @@ import {
 	IDispatchers,
 	ITask,
 } from "../../Context/TodoContext";
-import { isGeneralTask } from '../../Utils'
+import { isGeneralTask } from "../../Utils";
 import tasksImage from "../../Statics/empty-tasks.svg";
 
 export default () => {
@@ -44,11 +44,11 @@ export default () => {
 						);
 					})
 				) : (
-						<EmptyState
-							image={tasksImage}
-							text="Your tasks are empty!"
-						/>
-					)}
+					<EmptyState
+						image={tasksImage}
+						text="Your tasks are empty!"
+					/>
+				)}
 			</TaskRowsContainer>
 			<AddTask onAdd={addTask} isImportant={false} isMyday={false} />
 		</>

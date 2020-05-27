@@ -3,7 +3,12 @@ import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
 import classnames from "classnames";
 import { TodoContext, IList, IState } from "../../Context/TodoContext";
 import { ThemeContext } from "../../Context/ThemeContext";
-import { isImportantTask, isMydayTask, isGeneralTask, filterCustomListTasks } from '../../Utils'
+import {
+	isImportantTask,
+	isMydayTask,
+	isGeneralTask,
+	filterCustomListTasks,
+} from "../../Utils";
 import SidebarLink from "../SidebarLink";
 
 export default () => {
@@ -16,7 +21,9 @@ export default () => {
 		"bg-gray-600": isDark,
 	});
 
-	const importantTasksCount = tasks.length ? tasks.filter(isImportantTask).length : 0;
+	const importantTasksCount = tasks.length
+		? tasks.filter(isImportantTask).length
+		: 0;
 	const mydayTasksCount = tasks.length ? tasks.filter(isMydayTask).length : 0;
 	const allTasksCount = tasks.length ? tasks.filter(isGeneralTask).length : 0;
 
@@ -52,16 +59,16 @@ export default () => {
 
 			{lists.length
 				? lists.map((list: IList) => {
-					return (
-						<SidebarLink
-							key={list.id}
-							path={`/tasks/list/${list.id}`}
-							text={list.name}
-							icon={<FiList />}
-							count={getTasksCountOfList(list.id)}
-						/>
-					);
-				})
+						return (
+							<SidebarLink
+								key={list.id}
+								path={`/tasks/list/${list.id}`}
+								text={list.name}
+								icon={<FiList />}
+								count={getTasksCountOfList(list.id)}
+							/>
+						);
+				  })
 				: null}
 		</div>
 	);

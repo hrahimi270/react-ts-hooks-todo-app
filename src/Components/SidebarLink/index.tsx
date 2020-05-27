@@ -7,14 +7,14 @@ type props = {
 	path: string;
 	text: string;
 	color?:
-	| "red"
-	| "orange"
-	| "yellow"
-	| "green"
-	| "blue"
-	| "purple"
-	| "pink"
-	| "gray";
+		| "red"
+		| "orange"
+		| "yellow"
+		| "green"
+		| "blue"
+		| "purple"
+		| "pink"
+		| "gray";
 	icon?: React.ReactNode;
 	count?: number;
 };
@@ -57,9 +57,9 @@ export default (props: props) => {
 
 	// counter bdage
 	const countClassnames = classnames("ml-auto text-xs", {
-		'text-gray-100': isDark,
-		'text-gray-800': !isDark
-	})
+		"text-gray-100": isDark,
+		"text-gray-800": !isDark,
+	});
 
 	return (
 		<Link to={props.path} className={linkClassName}>
@@ -69,7 +69,9 @@ export default (props: props) => {
 
 			{props.text}
 
-			{props.count ? <span className={countClassnames}>{props.count}</span> : null}
+			{props.count ? (
+				<span className={countClassnames}>{props.count}</span>
+			) : null}
 		</Link>
 	);
 };

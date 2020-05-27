@@ -1,19 +1,19 @@
-import { ITask } from '../Context/TodoContext'
+import { ITask } from "../Context/TodoContext";
 
 export function isImportantTask(task: ITask) {
-    return task.important
+	return task.important;
 }
 
 export function isMydayTask(task: ITask) {
-    return task.myday
+	return task.myday;
 }
 
 export function isGeneralTask(task: ITask) {
-    return !task.listID
+	return !task.listID;
 }
 
 export function filterCustomListTasks(id: string) {
-    return function isCustomListTask(task: ITask) {
-        return task.listID === id
-    }
+	return function isCustomListTask(task: ITask) {
+		return task.listID === id;
+	};
 }
