@@ -13,14 +13,14 @@ import {
 	IState,
 	IDispatchers,
 } from "../../Context/TodoContext";
-import { isMydayTask } from '../../Utils'
+import { isMydayTask, getListNameOfOneTask } from '../../Utils'
 import mydayImage from "../../Statics/empty-myday.svg";
 
 export default () => {
 	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
 		TodoDispatcherContext,
 	);
-	const { tasks } = useContext<IState>(TodoContext);
+	const { tasks, lists } = useContext<IState>(TodoContext);
 
 	const filteredTasks: ITask[] = tasks.filter(isMydayTask);
 
@@ -38,6 +38,7 @@ export default () => {
 								done={task.done}
 								important={task.important}
 								myDay={task.myday}
+								sourceList={getListNameOfOneTask(task.listID, lists)}
 								onEdit={editTask}
 								onDeleteClick={deleteTask}
 							/>

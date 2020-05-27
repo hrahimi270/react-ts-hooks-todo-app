@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import classNames from "classnames";
-import { FiStar, FiSun, FiTrash } from "react-icons/fi";
+import { FiStar, FiSun, FiTrash, FiList } from "react-icons/fi";
 import { ThemeContext } from "../../Context/ThemeContext";
 import RowCheckbox from "../RowCheckbox";
 
@@ -10,6 +10,7 @@ type props = {
 	done: boolean;
 	important?: boolean;
 	myDay?: boolean;
+	sourceList?: string;
 	onEdit: Function;
 	onDeleteClick: Function;
 };
@@ -25,6 +26,11 @@ export default (props: props) => {
 			"bg-gray-900": isDark,
 		},
 	);
+
+	const taskSourceListClassnames = classNames('ml-3 flex items-center text-sm', {
+		'text-gray-500': isDark,
+		'text-gray-600': !isDark
+	})
 
 	const buttonsBaseClasses = classNames(
 		"text-xl rounded-full p-3 focus:outline-none",
@@ -82,6 +88,13 @@ export default (props: props) => {
 				labelFor={props.id}
 				onChange={onDoneChanges}
 			/>
+
+			{props.sourceList ? (
+				<span className={taskSourceListClassnames}>
+					<FiList />
+					<span className="ml-1">{props.sourceList}</span>
+				</span>
+			) : null}
 
 			<div className="ml-auto flex items-center">
 				<button

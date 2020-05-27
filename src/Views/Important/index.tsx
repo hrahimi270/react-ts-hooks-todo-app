@@ -10,18 +10,18 @@ import {
 	TodoContext,
 	TodoDispatcherContext,
 	ITask,
+	IList,
 	IDispatchers,
 	IState,
 } from "../../Context/TodoContext";
-import { isImportantTask } from '../../Utils'
+import { isImportantTask, getListNameOfOneTask } from '../../Utils'
 import importantImage from "../../Statics/empty-important.svg";
 
 export default () => {
 	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
 		TodoDispatcherContext,
 	);
-	const { tasks } = useContext<IState>(TodoContext);
-
+	const { tasks, lists } = useContext<IState>(TodoContext);
 	const filteredTasks: ITask[] = tasks.filter(isImportantTask);
 
 	return (
@@ -38,6 +38,7 @@ export default () => {
 								done={task.done}
 								important={task.important}
 								myDay={task.myday}
+								sourceList={getListNameOfOneTask(task.listID, lists)}
 								onEdit={editTask}
 								onDeleteClick={deleteTask}
 							/>
