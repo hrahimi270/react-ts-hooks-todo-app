@@ -15,6 +15,7 @@ import {
 	IState,
 	IDispatchers,
 } from "../../Context/TodoContext";
+import { filterCustomListTasks } from '../../Utils';
 import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
 export default () => {
@@ -23,9 +24,9 @@ export default () => {
 		TodoDispatcherContext,
 	);
 	const { tasks, lists } = useContext<IState>(TodoContext);
-	const filteredTasks: ITask[] = tasks.filter(
-		(task: ITask) => task.listID === id,
-	);
+
+	const isCustomListTask = filterCustomListTasks(id as string);
+	const filteredTasks: ITask[] = tasks.filter(isCustomListTask);
 
 	function getListName(): string {
 		const activeList: IList = lists.filter(
@@ -58,11 +59,11 @@ export default () => {
 						);
 					})
 				) : (
-					<EmptyState
-						image={listTasksImage}
-						text="There is no task in this list!"
-					/>
-				)}
+						<EmptyState
+							image={listTasksImage}
+							text="There is no task in this list!"
+						/>
+					)}
 			</TaskRowsContainer>
 
 			<AddTask

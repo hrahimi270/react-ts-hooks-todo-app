@@ -13,6 +13,7 @@ import {
 	IDispatchers,
 	IState,
 } from "../../Context/TodoContext";
+import { isImportantTask } from '../../Utils'
 import importantImage from "../../Statics/empty-important.svg";
 
 export default () => {
@@ -20,9 +21,8 @@ export default () => {
 		TodoDispatcherContext,
 	);
 	const { tasks } = useContext<IState>(TodoContext);
-	const filteredTasks: ITask[] = tasks.filter(
-		(task: ITask) => task.important === true,
-	);
+
+	const filteredTasks: ITask[] = tasks.filter(isImportantTask);
 
 	return (
 		<>
@@ -44,11 +44,11 @@ export default () => {
 						);
 					})
 				) : (
-					<EmptyState
-						image={importantImage}
-						text="Your important tasks are empty!"
-					/>
-				)}
+						<EmptyState
+							image={importantImage}
+							text="Your important tasks are empty!"
+						/>
+					)}
 			</TaskRowsContainer>
 			<AddTask onAdd={addTask} isMyday={false} isImportant />
 		</>

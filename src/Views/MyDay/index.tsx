@@ -13,6 +13,7 @@ import {
 	IState,
 	IDispatchers,
 } from "../../Context/TodoContext";
+import { isMydayTask } from '../../Utils'
 import mydayImage from "../../Statics/empty-myday.svg";
 
 export default () => {
@@ -20,9 +21,8 @@ export default () => {
 		TodoDispatcherContext,
 	);
 	const { tasks } = useContext<IState>(TodoContext);
-	const filteredTasks: ITask[] = tasks.filter(
-		(task: ITask) => task.myday === true,
-	);
+
+	const filteredTasks: ITask[] = tasks.filter(isMydayTask);
 
 	return (
 		<>
@@ -44,11 +44,11 @@ export default () => {
 						);
 					})
 				) : (
-					<EmptyState
-						image={mydayImage}
-						text="Your daily tasks are empty!"
-					/>
-				)}
+						<EmptyState
+							image={mydayImage}
+							text="Your daily tasks are empty!"
+						/>
+					)}
 			</TaskRowsContainer>
 			<AddTask onAdd={addTask} isImportant={false} isMyday />
 		</>

@@ -3,6 +3,7 @@ import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
 import classnames from "classnames";
 import { TodoContext, IList, IState } from "../../Context/TodoContext";
 import { ThemeContext } from "../../Context/ThemeContext";
+import { isImportantTask, isMydayTask, isGeneralTask, filterCustomListTasks } from '../../Utils'
 import SidebarLink from "../SidebarLink";
 
 export default () => {
@@ -15,12 +16,13 @@ export default () => {
 		"bg-gray-600": isDark,
 	});
 
-	const importantTasksCount = tasks.length ? tasks.filter((task) => task.important).length : 0;
-	const mydayTasksCount = tasks.length ? tasks.filter((task) => task.myday).length : 0;
-	const allTasksCount = tasks.length ? tasks.filter((task) => !task.listID).length : 0;
+	const importantTasksCount = tasks.length ? tasks.filter(isImportantTask).length : 0;
+	const mydayTasksCount = tasks.length ? tasks.filter(isMydayTask).length : 0;
+	const allTasksCount = tasks.length ? tasks.filter(isGeneralTask).length : 0;
 
 	function getTasksCountOfList(listID: string) {
-		return tasks.length ? tasks.filter(task => task.listID === listID).length : 0;
+		const isCustomListTask = filterCustomListTasks(listID);
+		return tasks.length ? tasks.filter(isCustomListTask).length : 0;
 	}
 
 	return (

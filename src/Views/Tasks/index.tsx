@@ -13,6 +13,7 @@ import {
 	IDispatchers,
 	ITask,
 } from "../../Context/TodoContext";
+import { isGeneralTask } from '../../Utils'
 import tasksImage from "../../Statics/empty-tasks.svg";
 
 export default () => {
@@ -20,9 +21,8 @@ export default () => {
 		TodoDispatcherContext,
 	);
 	const { tasks } = useContext<IState>(TodoContext);
-	const filteredTasks: ITask[] = tasks.filter(
-		(task: ITask) => task.listID === "",
-	);
+
+	const filteredTasks: ITask[] = tasks.filter(isGeneralTask);
 
 	return (
 		<>
@@ -44,11 +44,11 @@ export default () => {
 						);
 					})
 				) : (
-					<EmptyState
-						image={tasksImage}
-						text="Your tasks are empty!"
-					/>
-				)}
+						<EmptyState
+							image={tasksImage}
+							text="Your tasks are empty!"
+						/>
+					)}
 			</TaskRowsContainer>
 			<AddTask onAdd={addTask} isImportant={false} isMyday={false} />
 		</>
