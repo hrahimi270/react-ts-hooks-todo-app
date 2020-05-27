@@ -7,15 +7,16 @@ type props = {
 	path: string;
 	text: string;
 	color?:
-		| "red"
-		| "orange"
-		| "yellow"
-		| "green"
-		| "blue"
-		| "purple"
-		| "pink"
-		| "gray";
+	| "red"
+	| "orange"
+	| "yellow"
+	| "green"
+	| "blue"
+	| "purple"
+	| "pink"
+	| "gray";
 	icon?: React.ReactNode;
+	count?: number;
 };
 
 export default (props: props) => {
@@ -38,8 +39,9 @@ export default (props: props) => {
 	const activeClass = `bg-${color}-100`;
 	const darkActiveClass = `bg-gray-900`;
 
+	// link
 	const linkClassName = classnames(
-		"w-11/12 flex items-center px-6 py-3 mb-2 mx-auto rounded-md",
+		"w-11/12 flex items-center pl-6 pr-3 py-3 mb-2 mx-auto rounded-md",
 		{
 			"text-gray-200": isDark,
 			"text-gray-800": !isDark,
@@ -53,12 +55,21 @@ export default (props: props) => {
 	);
 	const iconClassName = classnames("mr-2", `text-${color}-500`);
 
+	// counter bdage
+	const countClassnames = classnames("ml-auto text-xs", {
+		'text-gray-100': isDark,
+		'text-gray-800': !isDark
+	})
+
 	return (
 		<Link to={props.path} className={linkClassName}>
 			{props.icon ? (
 				<div className={iconClassName}>{props.icon}</div>
 			) : null}
+
 			{props.text}
+
+			{props.count ? <span className={countClassnames}>{props.count}</span> : null}
 		</Link>
 	);
 };
