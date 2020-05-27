@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import classNames from "classnames";
 import { FiStar, FiSun, FiTrash } from "react-icons/fi";
+import { ThemeContext } from '../../Context/ThemeContext'
 import RowCheckbox from "../RowCheckbox";
 
 type props = {
@@ -14,28 +15,29 @@ type props = {
 };
 
 export default (props: props) => {
-	const buttonsBaseClasses =
-		"text-xl rounded-full p-3 focus:outline-none focus:bg-gray-200 hover:bg-gray-200";
+	const { theme } = useContext(ThemeContext)
+	const isDark = theme === 'dark';
+
+	const taskRowClassnames = classNames('flex items-center w-full mb-1 rounded-md py-1 px-3', {
+		'bg-gray-300': !isDark,
+		'bg-gray-900': isDark
+	})
+
+	const buttonsBaseClasses = classNames('text-xl rounded-full p-3 focus:outline-none', {
+		'focus:bg-gray-200 hover:bg-gray-100': !isDark,
+		'focus:bg-gray-400 hover:bg-gray-400': isDark
+	});
 	const importantButtonClasses = classNames(buttonsBaseClasses, {
-		"text-gray-600": !props.important,
-		"hover:text-purple-600": !props.important,
-		"focus:text-purple-600": !props.important,
-		"text-purple-600": props.important,
-		"hover:text-purple-400": props.important,
-		"focus:text-purple-400": props.important,
+		"text-gray-600 hover:text-purple-600 focus:text-purple-600": !props.important,
+		"text-purple-600 hover:text-purple-400 focus:text-purple-400": props.important
 	});
 	const myDayButtonClasses = classNames(buttonsBaseClasses, {
-		"text-gray-600": !props.myDay,
-		"hover:text-orange-600": !props.myDay,
-		"focus:text-orange-600": !props.myDay,
-		"text-orange-600": props.myDay,
-		"hover:text-orange-400": props.myDay,
-		"focus:text-orange-400": props.myDay,
+		"text-gray-600 hover:text-orange-600 focus:text-orange-600": !props.myDay,
+		"text-orange-600 hover:text-orange-400 focus:text-orange-400": props.myDay
 	});
 	const DeleteButtonClasses = classNames(
 		buttonsBaseClasses,
-		"text-red-600",
-		"hover:text-red-400",
+		"text-red-600 hover:text-red-400 focus:text-red-400"
 	);
 
 	function onDoneChanges() {
@@ -65,7 +67,7 @@ export default (props: props) => {
 	}
 
 	return (
-		<div className="flex items-center w-full mb-1 rounded-md bg-gray-300 py-1 px-3">
+		<div className={taskRowClassnames}>
 			<RowCheckbox
 				label={props.task}
 				checked={props.done}

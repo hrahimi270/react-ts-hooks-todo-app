@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import classnames from 'classnames'
+import { ThemeContext } from '../../Context/ThemeContext'
 
 type props = {
 	image: string;
@@ -6,10 +8,18 @@ type props = {
 };
 
 export default (props: props) => {
+	const { theme } = useContext(ThemeContext)
+	const isDark = theme === 'dark';
+
+	const paragraphClassnames = classnames('text-xl', {
+		'text-gray-600': !isDark,
+		'text-gray-200': isDark
+	})
+
 	return (
 		<div className="flex flex-col justify-center items-center h-full w-full">
 			<img src={props.image} alt={props.text} className="max-w-lg" />
-			<p className="text-gray-600 text-xl">{props.text}</p>
+			<p className={paragraphClassnames}>{props.text}</p>
 		</div>
 	);
 };
