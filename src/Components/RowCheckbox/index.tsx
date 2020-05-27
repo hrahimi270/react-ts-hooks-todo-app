@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled, { keyframes } from "styled-components";
-import { ThemeContext } from '../../Context/ThemeContext'
+import { ThemeContext } from "../../Context/ThemeContext";
 
 const checkFrames = keyframes`
     50% {
@@ -53,7 +53,7 @@ const CheckboxLabelText = styled.span`
 	display: flex;
 	align-items: center;
 	margin-left: 8px;
-	color: ${props => props.color};
+	color: ${(props) => props.color};
 	transform: translate3d(0, 0, 0);
 
 	&:after {
@@ -116,8 +116,8 @@ type props = {
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext)
-	const isDark = theme === 'dark';
+	const { theme } = useContext(ThemeContext);
+	const isDark = theme === "dark";
 	const labelColor = isDark ? "#edf2f7" : "#1a202c";
 
 	return (
@@ -134,7 +134,9 @@ export default (props: props) => {
 						<polyline points="1 5 4 8 11 1"></polyline>
 					</svg>
 				</CheckboxLabelSvgParent>
-				<CheckboxLabelText color={labelColor}>{props.label}</CheckboxLabelText>
+				<CheckboxLabelText color={labelColor}>
+					{props.label}
+				</CheckboxLabelText>
 			</CheckboxLabel>
 		</CheckBoxWrapper>
 	);

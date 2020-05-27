@@ -92,17 +92,19 @@ function TaskState({ children }: props) {
 	return (
 		<TodoContext.Provider
 			value={{
-				...state
+				...state,
 			}}
 		>
-			<TodoDispatcherContext.Provider value={{
-				addTask,
-				editTask,
-				deleteTask,
-				addList,
-				editList,
-				deleteList,
-			}}>
+			<TodoDispatcherContext.Provider
+				value={{
+					addTask,
+					editTask,
+					deleteTask,
+					addList,
+					editList,
+					deleteList,
+				}}
+			>
 				{children}
 			</TodoDispatcherContext.Provider>
 		</TodoContext.Provider>

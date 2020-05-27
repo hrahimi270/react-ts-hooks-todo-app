@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
-import classnames from 'classnames';
+import classnames from "classnames";
 import { TodoContext, IList, IState } from "../../Context/TodoContext";
 import { ThemeContext } from "../../Context/ThemeContext";
 import SidebarLink from "../SidebarLink";
@@ -8,12 +8,12 @@ import SidebarLink from "../SidebarLink";
 export default () => {
 	const { theme } = useContext(ThemeContext);
 	const { lists } = useContext<IState>(TodoContext);
-	const isDark = theme === 'dark';
+	const isDark = theme === "dark";
 
-	const linksDividerClassnames = classnames('block w-11/12 my-2 mx-auto', {
-		'bg-gray-200': !isDark,
-		'bg-gray-600': isDark
-	})
+	const linksDividerClassnames = classnames("block w-11/12 my-2 mx-auto", {
+		"bg-gray-200": !isDark,
+		"bg-gray-600": isDark,
+	});
 
 	return (
 		<div className="flex-grow mb-4">
@@ -35,22 +35,19 @@ export default () => {
 				color="blue"
 				icon={<FiHome />}
 			/>
-			<span
-				className={linksDividerClassnames}
-				style={{ height: 2 }}
-			/>
+			<span className={linksDividerClassnames} style={{ height: 2 }} />
 
 			{lists.length
 				? lists.map((list: IList) => {
-					return (
-						<SidebarLink
-							key={list.id}
-							path={`/tasks/list/${list.id}`}
-							text={list.name}
-							icon={<FiList />}
-						/>
-					);
-				})
+						return (
+							<SidebarLink
+								key={list.id}
+								path={`/tasks/list/${list.id}`}
+								text={list.name}
+								icon={<FiList />}
+							/>
+						);
+				  })
 				: ""}
 		</div>
 	);

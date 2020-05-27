@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
-import classnames from 'classnames';
+import classnames from "classnames";
 import { IList } from "../../Context/TodoContext";
 import { ThemeContext } from "../../Context/ThemeContext";
 
@@ -12,20 +12,23 @@ type props = {
 export default (props: props) => {
 	const { theme } = useContext(ThemeContext);
 	const [inputValue, setInputValue] = useState<string>("");
-	const isDark = theme === 'dark';
+	const isDark = theme === "dark";
 
-	const inputClassnames = classnames('bg-transparent focus:outline-none px-2 py-1', {
-		'placeholder-gray-600': !isDark,
-		'placeholder-gray-400': isDark,
-		'text-gray-800': !isDark,
-		'text-gray-200': isDark,
-	});
+	const inputClassnames = classnames(
+		"bg-transparent focus:outline-none px-2 py-1",
+		{
+			"placeholder-gray-600": !isDark,
+			"placeholder-gray-400": isDark,
+			"text-gray-800": !isDark,
+			"text-gray-200": isDark,
+		},
+	);
 
-	const buttonClassnames = classnames('mr-2 focus:outline-none', {
-		'text-gray-500': !isDark,
-		'text-gray-400': isDark,
-		'hover:text-gray-700': !isDark,
-		'hover:text-gray-300': isDark,
+	const buttonClassnames = classnames("mr-2 focus:outline-none", {
+		"text-gray-500": !isDark,
+		"text-gray-400": isDark,
+		"hover:text-gray-700": !isDark,
+		"hover:text-gray-300": isDark,
 	});
 
 	function handleKeydown(event: React.KeyboardEvent<HTMLInputElement>) {

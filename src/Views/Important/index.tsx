@@ -6,11 +6,19 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext, TodoDispatcherContext, ITask, IDispatchers, IState } from "../../Context/TodoContext";
+import {
+	TodoContext,
+	TodoDispatcherContext,
+	ITask,
+	IDispatchers,
+	IState,
+} from "../../Context/TodoContext";
 import importantImage from "../../Statics/empty-important.svg";
 
 export default () => {
-	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(TodoDispatcherContext);
+	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
+		TodoDispatcherContext,
+	);
 	const { tasks } = useContext<IState>(TodoContext);
 	const filteredTasks: ITask[] = tasks.filter(
 		(task: ITask) => task.important === true,

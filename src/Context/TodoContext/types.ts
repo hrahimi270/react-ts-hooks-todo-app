@@ -23,10 +23,10 @@ export interface IAction {
 }
 
 export interface IDispatchers {
-	addTask: () => void,
-	editTask: () => void,
-	deleteTask: () => void,
-	addList: () => void,
-	editList: () => void,
-	deleteList: (listID: string, fallback: void) => void,
+	addTask: () => void;
+	editTask: () => void;
+	deleteTask: () => void;
+	addList: () => void;
+	editList: () => void;
+	deleteList: (listID: string, fallback: void) => void;
 }

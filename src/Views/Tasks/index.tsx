@@ -6,11 +6,19 @@ import {
 	AddTask,
 	EmptyState,
 } from "../../Components";
-import { TodoContext, TodoDispatcherContext, IState, IDispatchers, ITask } from "../../Context/TodoContext";
+import {
+	TodoContext,
+	TodoDispatcherContext,
+	IState,
+	IDispatchers,
+	ITask,
+} from "../../Context/TodoContext";
 import tasksImage from "../../Statics/empty-tasks.svg";
 
 export default () => {
-	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(TodoDispatcherContext)
+	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
+		TodoDispatcherContext,
+	);
 	const { tasks } = useContext<IState>(TodoContext);
 	const filteredTasks: ITask[] = tasks.filter(
 		(task: ITask) => task.listID === "",
@@ -42,11 +50,7 @@ export default () => {
 					/>
 				)}
 			</TaskRowsContainer>
-			<AddTask
-				onAdd={addTask}
-				isImportant={false}
-				isMyday={false}
-			/>
+			<AddTask onAdd={addTask} isImportant={false} isMyday={false} />
 		</>
 	);
 };

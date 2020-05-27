@@ -22,7 +22,7 @@ export default (state: IState, action: IAction): IState => {
 			const newTasks = state.tasks.concat(action.payload);
 
 			localStorage.setItem("tasks", JSON.stringify(newTasks));
-			
+
 			return {
 				...state,
 				tasks: newTasks,

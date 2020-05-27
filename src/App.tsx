@@ -18,7 +18,10 @@ function App() {
 								exact
 							/>
 							<Route path="/tasks" component={TasksView} exact />
-							<Route path="/tasks/list/:id" component={ListView} />
+							<Route
+								path="/tasks/list/:id"
+								component={ListView}
+							/>
 							<Route
 								path="/tasks/important"
 								component={ImportantView}
