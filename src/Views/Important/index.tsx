@@ -10,7 +10,6 @@ import {
 	TodoContext,
 	TodoDispatcherContext,
 	ITask,
-	IList,
 	IDispatchers,
 	IState,
 } from "../../Context/TodoContext";

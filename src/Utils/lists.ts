@@ -1,4 +1,4 @@
-import { ITask, IList } from '../Context/TodoContext'
+import { IList } from '../Context/TodoContext'
 
 export function getListOfTask(listID: string) {
     return function isListOfTask(list: IList) {
