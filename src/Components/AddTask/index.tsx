@@ -20,7 +20,7 @@ export default (props: props) => {
 		"flex items-center w-full rounded-md mb-3 py-1 px-3",
 		{
 			"bg-gray-200": theme === "light",
-			"bg-gray-900": theme === "dark",
+			"bg-gray-800": theme === "dark",
 		},
 	);
 	const addTaskButtonClassnames = classnames("focus:outline-none", {
