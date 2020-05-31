@@ -1,6 +1,15 @@
 # Todo app
 
-This app created with React (cra), TypeScript, TailwindCSS, Styled-components.
+A fancy Todo app created with React, TypeScript, TailwindCSS, Styled-components. Using Jest, Enzyme, and Storybook for debugging components.
+This app, uses Context API to manage and store data.
+
+## Features
+- [x] Adding and Removing custom lists
+- [x] Important tasks page (filter)
+- [x] Daily tasks page (filter)
+- [x] Dark mode
+- [x] Show the source list of tasks in Important and Daily pages
+- [ ] Mobile version (Responsive)
 
 ## Available Scripts
 
