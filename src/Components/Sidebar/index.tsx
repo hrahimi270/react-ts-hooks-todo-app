@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import classnames from "classnames";
 import { useTodoDispatchContext } from "../../Context/TodoContext";
 import { useThemeContext } from "../../Context/ThemeContext";
@@ -7,7 +7,7 @@ import SidebarDarkmodeSwitcher from "../SidebarDarkmodeSwitcher";
 import SidebarLinksWrapper from "../SidebarLinksWrapper";
 import SidebarActions from "../SidebarActions";
 
-export default () => {
+const Sidebar: FC = () => {
 	const { addList } = useTodoDispatchContext();
 	const { theme } = useThemeContext();
 	const sidebarClassNames = classnames(
@@ -33,3 +33,5 @@ export default () => {
 		</aside>
 	);
 };
+
+export default Sidebar;

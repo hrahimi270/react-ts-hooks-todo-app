@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -14,10 +14,9 @@ import {
 import { isGeneralTask } from "../../Utils";
 import tasksImage from "../../Statics/empty-tasks.svg";
 
-export default () => {
+const TasksView: FC = () => {
 	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
 	const { tasks } = useTodoContext();
-
 	const filteredTasks: ITask[] = tasks.filter(isGeneralTask);
 
 	return (
@@ -50,3 +49,5 @@ export default () => {
 		</>
 	);
 };
+
+export default TasksView;

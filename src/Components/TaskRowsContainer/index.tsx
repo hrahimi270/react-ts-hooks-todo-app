@@ -1,13 +1,9 @@
-import React from "react";
+import React, { FC } from "react";
 
-type props = {
-	children: React.ReactNode;
-};
-
-export default (props: props) => {
+const TaskRowsContainer: FC = ({ children }) => {
 	return (
-		<div className="flex-grow h-full mb-10 overflow-y-auto">
-			{props.children}
-		</div>
+		<div className="flex-grow h-full mb-10 overflow-y-auto">{children}</div>
 	);
 };
+
+export default TaskRowsContainer;

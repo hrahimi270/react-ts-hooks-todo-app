@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import classnames from "classnames";
 import {
@@ -13,7 +13,7 @@ const ModeImage = styled.img`
 	margin-right: 0.5rem;
 `;
 
-export default function SidebarDarkmodeSwitcher() {
+const SidebarDarkmodeSwitcher: FC = () => {
 	const { theme } = useThemeContext();
 	const { toggleTheme } = useThemeDispatcherContext();
 	const isDark = theme === "dark";
@@ -45,4 +45,6 @@ export default function SidebarDarkmodeSwitcher() {
 			)}
 		</button>
 	);
-}
+};
+
+export default SidebarDarkmodeSwitcher;

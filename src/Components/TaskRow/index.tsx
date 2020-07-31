@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import classNames from "classnames";
 import { FiStar, FiSun, FiTrash, FiList } from "react-icons/fi";
 import { useThemeContext } from "../../Context/ThemeContext";
@@ -15,7 +15,7 @@ type props = {
 	onDeleteClick: Function;
 };
 
-export default (props: props) => {
+const TaskRow: FC<props> = (props) => {
 	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 
@@ -116,3 +116,5 @@ export default (props: props) => {
 		</div>
 	);
 };
+
+export default TaskRow;

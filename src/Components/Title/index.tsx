@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { FiTrash } from "react-icons/fi";
 import classnames from "classnames";
@@ -10,7 +10,7 @@ type props = {
 	inCustomList?: boolean;
 };
 
-export default (props: props) => {
+const Title: FC<props> = (props) => {
 	const { theme } = useThemeContext();
 	const { deleteList } = useTodoDispatchContext();
 	const { push } = useHistory();
@@ -47,3 +47,5 @@ export default (props: props) => {
 		</div>
 	);
 };
+
+export default Title;

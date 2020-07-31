@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { useParams } from "react-router-dom";
 import {
 	ContentTitle,
@@ -16,7 +16,7 @@ import {
 import { filterCustomListTasks } from "../../Utils";
 import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
-export default () => {
+const ListView: FC = () => {
 	const { id } = useParams();
 	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
 	const { tasks, lists } = useTodoContext();
@@ -71,3 +71,5 @@ export default () => {
 		</>
 	);
 };
+
+export default ListView;

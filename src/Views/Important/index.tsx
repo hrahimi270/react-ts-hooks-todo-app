@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -14,7 +14,7 @@ import {
 import { isImportantTask, getListNameOfOneTask } from "../../Utils";
 import importantImage from "../../Statics/empty-important.svg";
 
-export default () => {
+const ImportantView: FC = () => {
 	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
 	const { tasks, lists } = useTodoContext();
 	const filteredTasks: ITask[] = tasks.filter(isImportantTask);
@@ -53,3 +53,5 @@ export default () => {
 		</>
 	);
 };
+
+export default ImportantView;

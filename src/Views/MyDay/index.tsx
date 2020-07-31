@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -14,10 +14,9 @@ import {
 import { isMydayTask, getListNameOfOneTask } from "../../Utils";
 import mydayImage from "../../Statics/empty-myday.svg";
 
-export default () => {
+const MyDayView: FC = () => {
 	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
 	const { tasks, lists } = useTodoContext();
-
 	const filteredTasks: ITask[] = tasks.filter(isMydayTask);
 
 	return (
@@ -54,3 +53,5 @@ export default () => {
 		</>
 	);
 };
+
+export default MyDayView;

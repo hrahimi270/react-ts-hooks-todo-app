@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
 import classnames from "classnames";
@@ -9,7 +9,7 @@ type props = {
 	onAdd: Function;
 };
 
-export default (props: props) => {
+const SidebarActions: FC<props> = (props) => {
 	const { theme } = useThemeContext();
 	const [inputValue, setInputValue] = useState<string>("");
 	const isDark = theme === "dark";
@@ -73,3 +73,5 @@ export default (props: props) => {
 		</div>
 	);
 };
+
+export default SidebarActions;

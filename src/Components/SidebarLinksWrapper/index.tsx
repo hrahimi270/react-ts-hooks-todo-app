@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
 import classnames from "classnames";
 import { useTodoContext, IList } from "../../Context/TodoContext";
@@ -11,7 +11,7 @@ import {
 } from "../../Utils";
 import SidebarLink from "../SidebarLink";
 
-export default () => {
+const SidebarLinksWrapper: FC = () => {
 	const { theme } = useThemeContext();
 	const { lists, tasks } = useTodoContext();
 	const isDark = theme === "dark";
@@ -73,3 +73,5 @@ export default () => {
 		</div>
 	);
 };
+
+export default SidebarLinksWrapper;

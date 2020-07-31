@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import classnames from "classnames";
 import { useThemeContext } from "../../Context/ThemeContext";
 
@@ -7,7 +7,7 @@ type props = {
 	text: string;
 };
 
-export default (props: props) => {
+const EmptyState: FC<props> = ({ image, text }) => {
 	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 
@@ -18,8 +18,10 @@ export default (props: props) => {
 
 	return (
 		<div className="flex flex-col justify-center items-center h-full w-full">
-			<img src={props.image} alt={props.text} className="max-w-lg" />
-			<p className={paragraphClassnames}>{props.text}</p>
+			<img src={image} alt={text} className="max-w-lg" />
+			<p className={paragraphClassnames}>{text}</p>
 		</div>
 	);
 };
+
+export default EmptyState;

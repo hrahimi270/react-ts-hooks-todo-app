@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FC } from "react";
 import classnames from "classnames";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
@@ -12,7 +12,7 @@ type props = {
 	onAdd: Function;
 };
 
-export default (props: props) => {
+const AddTask: FC<props> = (props) => {
 	const { theme } = useThemeContext();
 	const [value, setValue] = useState("");
 
@@ -46,15 +46,15 @@ export default (props: props) => {
 	function handleAddingTask() {
 		const id = uniqid();
 		const task = value;
-		const { listID = "" } = props;
+		const { listID = "", isImportant, isMyday } = props;
 
 		if (task !== "") {
 			const taskData: ITask = {
 				id,
 				task,
 				done: false,
-				important: props.isImportant,
-				myday: props.isMyday,
+				important: isImportant,
+				myday: isMyday,
 				listID,
 			};
 			props.onAdd(taskData);
@@ -79,9 +79,11 @@ export default (props: props) => {
 				value={value}
 				onChange={(e) => setValue(e.target.value)}
 				onKeyDown={(e) => handleKeydown(e)}
-				autoFocus
 				className={addTaskInputClassnames}
+				autoFocus
 			/>
 		</div>
 	);
 };
+
+export default AddTask;

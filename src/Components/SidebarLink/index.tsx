@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import classnames from "classnames";
 import { useThemeContext } from "../../Context/ThemeContext";
 import { Link, useHistory } from "react-router-dom";
@@ -19,7 +19,7 @@ type props = {
 	count?: number;
 };
 
-export default (props: props) => {
+const SidebarLink: FC<props> = (props) => {
 	const {
 		location: { pathname },
 	} = useHistory();
@@ -75,3 +75,5 @@ export default (props: props) => {
 		</Link>
 	);
 };
+
+export default SidebarLink;

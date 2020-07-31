@@ -1,11 +1,11 @@
 import React, { FC } from "react";
 import { Sidebar, DashboardContent } from "../../Components";
 
-const DefaultLayout: FC = (props) => {
+const DefaultLayout: FC = ({ children }) => {
 	return (
 		<main className="flex">
 			<Sidebar />
-			<DashboardContent>{props.children}</DashboardContent>
+			<DashboardContent>{children}</DashboardContent>
 		</main>
 	);
 };

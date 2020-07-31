@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import styled, { keyframes } from "styled-components";
 import { useThemeContext } from "../../Context/ThemeContext";
 
@@ -115,7 +115,7 @@ type props = {
 	onChange: Function;
 };
 
-export default (props: props) => {
+const RowCheckbox: FC<props> = (props) => {
 	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 	const labelColor = isDark ? "#edf2f7" : "#1a202c";
@@ -141,3 +141,5 @@ export default (props: props) => {
 		</CheckBoxWrapper>
 	);
 };
+
+export default RowCheckbox;
