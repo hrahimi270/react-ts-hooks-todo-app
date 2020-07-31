@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import {
 	ContentTitle,
@@ -8,22 +8,18 @@ import {
 	EmptyState,
 } from "../../Components";
 import {
-	TodoContext,
-	TodoDispatcherContext,
+	useTodoContext,
+	useTodoDispatchContext,
 	IList,
 	ITask,
-	IState,
-	IDispatchers,
 } from "../../Context/TodoContext";
 import { filterCustomListTasks } from "../../Utils";
 import listTasksImage from "../../Statics/empty-list-tasks.svg";
 
 export default () => {
 	const { id } = useParams();
-	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
-		TodoDispatcherContext,
-	);
-	const { tasks, lists } = useContext<IState>(TodoContext);
+	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
+	const { tasks, lists } = useTodoContext();
 
 	const isCustomListTask = filterCustomListTasks(id as string);
 	const filteredTasks: ITask[] = tasks.filter(isCustomListTask);

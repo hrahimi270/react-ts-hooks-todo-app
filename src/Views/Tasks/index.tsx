@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -7,20 +7,16 @@ import {
 	EmptyState,
 } from "../../Components";
 import {
-	TodoContext,
-	TodoDispatcherContext,
-	IState,
-	IDispatchers,
+	useTodoContext,
+	useTodoDispatchContext,
 	ITask,
 } from "../../Context/TodoContext";
 import { isGeneralTask } from "../../Utils";
 import tasksImage from "../../Statics/empty-tasks.svg";
 
 export default () => {
-	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
-		TodoDispatcherContext,
-	);
-	const { tasks } = useContext<IState>(TodoContext);
+	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
+	const { tasks } = useTodoContext();
 
 	const filteredTasks: ITask[] = tasks.filter(isGeneralTask);
 

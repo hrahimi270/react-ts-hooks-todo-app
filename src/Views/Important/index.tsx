@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -7,20 +7,16 @@ import {
 	EmptyState,
 } from "../../Components";
 import {
-	TodoContext,
-	TodoDispatcherContext,
+	useTodoContext,
+	useTodoDispatchContext,
 	ITask,
-	IDispatchers,
-	IState,
 } from "../../Context/TodoContext";
 import { isImportantTask, getListNameOfOneTask } from "../../Utils";
 import importantImage from "../../Statics/empty-important.svg";
 
 export default () => {
-	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
-		TodoDispatcherContext,
-	);
-	const { tasks, lists } = useContext<IState>(TodoContext);
+	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
+	const { tasks, lists } = useTodoContext();
 	const filteredTasks: ITask[] = tasks.filter(isImportantTask);
 
 	return (

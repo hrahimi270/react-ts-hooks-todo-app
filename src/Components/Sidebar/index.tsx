@@ -1,15 +1,15 @@
-import React, { useContext } from "react";
+import React from "react";
 import classnames from "classnames";
-import { TodoDispatcherContext, IDispatchers } from "../../Context/TodoContext";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useTodoDispatchContext } from "../../Context/TodoContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 import SidebarLogo from "../SidebarLogo";
 import SidebarDarkmodeSwitcher from "../SidebarDarkmodeSwitcher";
 import SidebarLinksWrapper from "../SidebarLinksWrapper";
 import SidebarActions from "../SidebarActions";
 
 export default () => {
-	const { addList } = useContext<IDispatchers>(TodoDispatcherContext);
-	const { theme } = useContext(ThemeContext);
+	const { addList } = useTodoDispatchContext();
+	const { theme } = useThemeContext();
 	const sidebarClassNames = classnames(
 		"fixed left-0 bottom-0 top-0 block overflow-y-auto overflow-hidden shadow-xl flex flex-col flex-no-wrap flex-wrap md:w-64 z-10 py-4",
 		{

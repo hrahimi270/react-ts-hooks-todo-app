@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 
 const checkFrames = keyframes`
     50% {
@@ -116,7 +116,7 @@ type props = {
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 	const labelColor = isDark ? "#edf2f7" : "#1a202c";
 

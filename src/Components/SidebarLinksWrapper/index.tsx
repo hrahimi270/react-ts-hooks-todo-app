@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FiStar, FiSun, FiHome, FiList } from "react-icons/fi";
 import classnames from "classnames";
-import { TodoContext, IList, IState } from "../../Context/TodoContext";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useTodoContext, IList } from "../../Context/TodoContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 import {
 	isImportantTask,
 	isMydayTask,
@@ -12,8 +12,8 @@ import {
 import SidebarLink from "../SidebarLink";
 
 export default () => {
-	const { theme } = useContext(ThemeContext);
-	const { lists, tasks } = useContext<IState>(TodoContext);
+	const { theme } = useThemeContext();
+	const { lists, tasks } = useTodoContext();
 	const isDark = theme === "dark";
 
 	const linksDividerClassnames = classnames("block w-11/12 my-2 mx-auto", {

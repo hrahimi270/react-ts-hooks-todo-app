@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import classnames from "classnames";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 import { Link, useHistory } from "react-router-dom";
 
 type props = {
@@ -23,7 +23,7 @@ export default (props: props) => {
 	const {
 		location: { pathname },
 	} = useHistory();
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useThemeContext();
 	const activeLink: Boolean = props.path === pathname;
 	const isDark = theme === "dark";
 

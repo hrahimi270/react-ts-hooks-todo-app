@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import classnames from "classnames";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 
 type props = {
 	image: string;
@@ -8,7 +8,7 @@ type props = {
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 
 	const paragraphClassnames = classnames("text-xl", {

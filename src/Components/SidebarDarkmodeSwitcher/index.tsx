@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 import classnames from "classnames";
 import {
-	ThemeDispatcherContext,
-	ThemeContext,
+	useThemeContext,
+	useThemeDispatcherContext,
 } from "../../Context/ThemeContext";
 import moonImg from "../../Statics/moon.svg";
 import sunImg from "../../Statics/sun.svg";
@@ -14,8 +14,8 @@ const ModeImage = styled.img`
 `;
 
 export default function SidebarDarkmodeSwitcher() {
-	const { theme } = useContext(ThemeContext);
-	const { toggleTheme } = useContext(ThemeDispatcherContext);
+	const { theme } = useThemeContext();
+	const { toggleTheme } = useThemeDispatcherContext();
 	const isDark = theme === "dark";
 
 	const buttonsClassnames = classnames(

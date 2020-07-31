@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { FiTrash } from "react-icons/fi";
 import classnames from "classnames";
-import { TodoDispatcherContext, IDispatchers } from "../../Context/TodoContext";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useTodoDispatchContext } from "../../Context/TodoContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 
 type props = {
 	title: string;
@@ -11,8 +11,8 @@ type props = {
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext);
-	const { deleteList } = useContext<IDispatchers>(TodoDispatcherContext);
+	const { theme } = useThemeContext();
+	const { deleteList } = useTodoDispatchContext();
 	const { push } = useHistory();
 	const { id = "" } = useParams();
 	const { inCustomList = false } = props;

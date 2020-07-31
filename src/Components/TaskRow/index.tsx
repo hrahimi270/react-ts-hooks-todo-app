@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import classNames from "classnames";
 import { FiStar, FiSun, FiTrash, FiList } from "react-icons/fi";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 import RowCheckbox from "../RowCheckbox";
 
 type props = {
@@ -16,7 +16,7 @@ type props = {
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 
 	const taskRowClassnames = classNames(

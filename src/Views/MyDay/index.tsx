@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import {
 	ContentTitle,
 	TaskRowsContainer,
@@ -7,20 +7,16 @@ import {
 	EmptyState,
 } from "../../Components";
 import {
-	TodoContext,
-	TodoDispatcherContext,
+	useTodoContext,
+	useTodoDispatchContext,
 	ITask,
-	IState,
-	IDispatchers,
 } from "../../Context/TodoContext";
 import { isMydayTask, getListNameOfOneTask } from "../../Utils";
 import mydayImage from "../../Statics/empty-myday.svg";
 
 export default () => {
-	const { editTask, deleteTask, addTask } = useContext<IDispatchers>(
-		TodoDispatcherContext,
-	);
-	const { tasks, lists } = useContext<IState>(TodoContext);
+	const { editTask, deleteTask, addTask } = useTodoDispatchContext();
+	const { tasks, lists } = useTodoContext();
 
 	const filteredTasks: ITask[] = tasks.filter(isMydayTask);
 

@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import classnames from "classnames";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 
 type props = {
 	children: React.ReactNode;
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useThemeContext();
 	const sectionClassName = classnames(
 		"relative md:ml-64 flex flex-col px-4 min-h-screen w-full",
 		{

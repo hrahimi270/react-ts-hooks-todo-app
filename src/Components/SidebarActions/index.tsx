@@ -1,16 +1,16 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { FiPlus } from "react-icons/fi";
 import uniqid from "uniqid";
 import classnames from "classnames";
 import { IList } from "../../Context/TodoContext";
-import { ThemeContext } from "../../Context/ThemeContext";
+import { useThemeContext } from "../../Context/ThemeContext";
 
 type props = {
 	onAdd: Function;
 };
 
 export default (props: props) => {
-	const { theme } = useContext(ThemeContext);
+	const { theme } = useThemeContext();
 	const [inputValue, setInputValue] = useState<string>("");
 	const isDark = theme === "dark";
 
