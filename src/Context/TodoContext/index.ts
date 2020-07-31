@@ -1,4 +1,4 @@
 export * from "./context";
-export { default as TodoState } from "./TodoState";
+export * from "./provider";
 export { INITIAL_STATE } from "./constants";
 export * from "./types";

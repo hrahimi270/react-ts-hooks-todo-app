@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import { DefaultLayout } from "./Layouts";
 import { ImportantView, MyDayView, TasksView, ListView } from "./Views";
-import { TodoState } from "./Context/TodoContext";
-import { ThemeState } from "./Context/ThemeContext";
+import { TodoProvider } from "./Context/TodoContext";
+import { ThemeProvider } from "./Context/ThemeContext";
 
 function App() {
 	return (
-		<TodoState>
-			<ThemeState>
+		<TodoProvider>
+			<ThemeProvider>
 				<BrowserRouter>
 					<DefaultLayout>
 						<Switch>
@@ -31,8 +31,8 @@ function App() {
 						</Switch>
 					</DefaultLayout>
 				</BrowserRouter>
-			</ThemeState>
-		</TodoState>
+			</ThemeProvider>
+		</TodoProvider>
 	);
 }
 

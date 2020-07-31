@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect } from "react";
+import React, { useReducer, useEffect, useContext, FC } from "react";
 import { TodoContext, TodoDispatcherContext } from "./context";
 import reducer from "./reducer";
 import {
@@ -12,13 +12,9 @@ import {
 	EDIT_LIST,
 	INITIAL_STATE,
 } from "./constants";
-import { ITask, IList } from "./types";
+import { ITask, IList, IState, IDispatchers } from "./types";
 
-type props = {
-	children: React.ReactNode;
-};
-
-function TaskState({ children }: props) {
+export const TodoProvider: FC = ({ children }) => {
 	const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
 
 	function addTask(task: ITask) {
@@ -109,6 +105,12 @@ function TaskState({ children }: props) {
 			</TodoDispatcherContext.Provider>
 		</TodoContext.Provider>
 	);
-}
+};
 
-export default TaskState;
+export const useTodoContext = (): IState => {
+	return useContext(TodoContext);
+};
+
+export const useTodoDispatchContext = (): IDispatchers => {
+	return useContext(TodoDispatcherContext);
+};

@@ -1,9 +1,15 @@
-import React, { createContext, useState, useEffect, FC } from "react";
+import React, {
+	createContext,
+	useState,
+	useEffect,
+	FC,
+	useContext,
+} from "react";
 
 export const ThemeContext = createContext({ theme: "light" });
 export const ThemeDispatcherContext = createContext({ toggleTheme: () => {} });
 
-export const ThemeState: FC<{}> = ({ children }) => {
+export const ThemeProvider: FC<{}> = ({ children }) => {
 	const [theme, setTheme] = useState("light");
 
 	function toggleTheme() {
@@ -27,4 +33,12 @@ export const ThemeState: FC<{}> = ({ children }) => {
 			</ThemeDispatcherContext.Provider>
 		</ThemeContext.Provider>
 	);
+};
+
+export const useThemeContext = () => {
+	return useContext(ThemeContext);
+};
+
+export const useThemeDispatcherContext = () => {
+	return useContext(ThemeDispatcherContext);
 };
