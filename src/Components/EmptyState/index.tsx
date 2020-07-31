@@ -2,12 +2,12 @@ import React, { FC } from "react";
 import classnames from "classnames";
 import { useThemeContext } from "../../Context/ThemeContext";
 
-type props = {
+interface IEmptyState {
 	image: string;
 	text: string;
-};
+}
 
-const EmptyState: FC<props> = ({ image, text }) => {
+const EmptyState: FC<IEmptyState> = ({ image, text }) => {
 	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 

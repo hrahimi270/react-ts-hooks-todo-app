@@ -4,7 +4,7 @@ import { FiStar, FiSun, FiTrash, FiList } from "react-icons/fi";
 import { useThemeContext } from "../../Context/ThemeContext";
 import RowCheckbox from "../RowCheckbox";
 
-type props = {
+interface ITaskRow {
 	id: string;
 	task: string;
 	done: boolean;
@@ -13,9 +13,9 @@ type props = {
 	sourceList?: string;
 	onEdit: Function;
 	onDeleteClick: Function;
-};
+}
 
-const TaskRow: FC<props> = (props) => {
+const TaskRow: FC<ITaskRow> = (props) => {
 	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 

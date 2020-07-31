@@ -5,14 +5,14 @@ import uniqid from "uniqid";
 import { ITask } from "../../Context/TodoContext";
 import { useThemeContext } from "../../Context/ThemeContext";
 
-type props = {
+interface IAddTask {
 	isImportant: boolean;
 	isMyday: boolean;
 	listID?: string;
 	onAdd: Function;
-};
+}
 
-const AddTask: FC<props> = (props) => {
+const AddTask: FC<IAddTask> = (props) => {
 	const { theme } = useThemeContext();
 	const [value, setValue] = useState("");
 

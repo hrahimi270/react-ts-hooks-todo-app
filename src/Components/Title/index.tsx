@@ -5,17 +5,16 @@ import classnames from "classnames";
 import { useTodoDispatchContext } from "../../Context/TodoContext";
 import { useThemeContext } from "../../Context/ThemeContext";
 
-type props = {
+interface ITitle {
 	title: string;
 	inCustomList?: boolean;
-};
+}
 
-const Title: FC<props> = (props) => {
+const Title: FC<ITitle> = ({ title, inCustomList = false }) => {
 	const { theme } = useThemeContext();
 	const { deleteList } = useTodoDispatchContext();
 	const { push } = useHistory();
 	const { id = "" } = useParams();
-	const { inCustomList = false } = props;
 	const isDark = theme === "dark";
 
 	const titleClassnames = classnames("text-2xl font-bold mb-4 mt-8", {
@@ -34,7 +33,7 @@ const Title: FC<props> = (props) => {
 
 	return (
 		<div className="flex items-center justify-between">
-			<h1 className={titleClassnames}>{props.title}</h1>
+			<h1 className={titleClassnames}>{title}</h1>
 
 			{inCustomList && (
 				<button

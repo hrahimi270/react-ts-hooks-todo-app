@@ -5,11 +5,11 @@ import classnames from "classnames";
 import { IList } from "../../Context/TodoContext";
 import { useThemeContext } from "../../Context/ThemeContext";
 
-type props = {
+interface ISidebarActions {
 	onAdd: Function;
-};
+}
 
-const SidebarActions: FC<props> = (props) => {
+const SidebarActions: FC<ISidebarActions> = (props) => {
 	const { theme } = useThemeContext();
 	const [inputValue, setInputValue] = useState<string>("");
 	const isDark = theme === "dark";

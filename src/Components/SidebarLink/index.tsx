@@ -3,23 +3,24 @@ import classnames from "classnames";
 import { useThemeContext } from "../../Context/ThemeContext";
 import { Link, useHistory } from "react-router-dom";
 
-type props = {
+type TColors =
+	| "red"
+	| "orange"
+	| "yellow"
+	| "green"
+	| "blue"
+	| "purple"
+	| "pink"
+	| "gray";
+interface ISidebarLink {
 	path: string;
 	text: string;
-	color?:
-		| "red"
-		| "orange"
-		| "yellow"
-		| "green"
-		| "blue"
-		| "purple"
-		| "pink"
-		| "gray";
+	color?: TColors;
 	icon?: React.ReactNode;
 	count?: number;
-};
+}
 
-const SidebarLink: FC<props> = (props) => {
+const SidebarLink: FC<ISidebarLink> = (props) => {
 	const {
 		location: { pathname },
 	} = useHistory();

@@ -108,14 +108,14 @@ const CheckboxInput = styled.input`
 	}
 `;
 
-type props = {
+interface IRowCheckbox {
 	label: string;
 	labelFor: string;
 	checked: boolean;
 	onChange: Function;
-};
+}
 
-const RowCheckbox: FC<props> = (props) => {
+const RowCheckbox: FC<IRowCheckbox> = (props) => {
 	const { theme } = useThemeContext();
 	const isDark = theme === "dark";
 	const labelColor = isDark ? "#edf2f7" : "#1a202c";
